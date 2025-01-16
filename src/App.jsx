@@ -5,10 +5,10 @@ const PayrollCalculator = () => {
   const [formData, setFormData] = useState({
     tipoSalario: "ordinario",
     salario: "",
-    otrosPagosSalariales: "0",
-    otrosPagosNoSalariales: "0",
-    auxilioTransporte: "0",
-    auxilioAlimentacion: "0",
+    otrosPagosSalariales: "",
+    otrosPagosNoSalariales: "",
+    auxilioTransporte: "",
+    auxilioAlimentacion: "",
     pensionado: "No",
   });
 
