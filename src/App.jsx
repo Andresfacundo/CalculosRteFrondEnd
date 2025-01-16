@@ -62,7 +62,7 @@ const PayrollCalculator = () => {
   return (
     <div className="calculator-container">
       <div className="calculator-card">
-        <h1>Calculadora</h1>
+        <h1>Calculadora de Salarios</h1>
 
         <form onSubmit={handleSubmit}>
           <div className="form-grid">
