@@ -27,7 +27,7 @@ const PayrollCalculator = () => {
     e.preventDefault();
    
     try {
-      const response = await fetch("http://localhost:3000/calcular", {
+      const response = await fetch("https://calculosconrte.onrender.com/api/calcular", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -166,7 +166,7 @@ const PayrollCalculator = () => {
               </div>
 
               <div className="result-card">
-                <h3>Seguridad Social</h3>
+                <h3>Seguridad Social y Parafiscales</h3>
                 <div className="result-content">
                   <p>
                     Salud Trabajador:{" "}
@@ -199,7 +199,7 @@ const PayrollCalculator = () => {
               </div>
 
               <div className="result-card">
-                <h3>Prestaciones Sociales</h3>
+                <h3>Prestaciones Sociales y Vacaciones</h3>
                 <div className="result-content">
                   <p>
                     Prima de Servicios:{" "}
