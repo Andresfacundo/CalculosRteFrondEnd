@@ -26,7 +26,7 @@ const PayrollCalculator = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/api/calcular", {
+      const response = await fetch("https://calculos-rte-frond-end.vercel.app/api/calcular", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -251,6 +251,10 @@ const PayrollCalculator = () => {
                   <p>
                     Total a Pagar:{" "}
                     {formatCurrency(results.proyecciones.totalPagar)}
+                  </p>
+                  <p>
+                    Deducciones:{" "}
+                    {formatCurrency(results.proyecciones.deducciones)}
                   </p>
                 </div>
               </div>
