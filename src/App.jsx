@@ -26,7 +26,7 @@ const PayrollCalculator = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch("https://calculos-rte-frond-end.vercel.app/api/calcular", {
+      const response = await fetch("https://calculosconrte.onrender.com/api/calcular", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
