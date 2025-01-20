@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './components/SalaryCalculator.css'
+import "./components/SalaryCalculator.css";
 
 const PayrollCalculator = () => {
   const [formData, setFormData] = useState({
@@ -14,7 +14,6 @@ const PayrollCalculator = () => {
 
   const [results, setResults] = useState(null);
 
-
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
@@ -25,9 +24,9 @@ const PayrollCalculator = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-   
+
     try {
-      const response = await fetch("https://calculosconrte.onrender.com/api/calcular", {
+      const response = await fetch("http://localhost:3000/api/calcular", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,7 +38,8 @@ const PayrollCalculator = () => {
           otrosPagosNoSalariales:
             parseFloat(formData.otrosPagosNoSalariales) || 0,
           auxilioTransporte: parseFloat(formData.auxilioTransporte) || 0,
-          auxilioAlimentacion: parseFloat(formData.auxilioAlimentacion) || 0,
+          deducciones: parseFloat(formData.deducciones) || 0,
+          retencionFuente: parseFloat(formData.retencionFuente) || 0,
         }),
       });
       const data = await response.json();
@@ -48,7 +48,6 @@ const PayrollCalculator = () => {
     } catch (error) {
       console.error("Error:", error);
     }
-    
   };
 
   const formatCurrency = (value) => {
@@ -62,7 +61,7 @@ const PayrollCalculator = () => {
   return (
     <div className="calculator-container">
       <div className="calculator-card">
-        <h1>Calculadora de Salarios</h1>
+        <h1>Calculadora de Costos e Ingresos Para Trabajadores</h1>
 
         <form onSubmit={handleSubmit}>
           <div className="form-grid">
@@ -122,15 +121,23 @@ const PayrollCalculator = () => {
             </div>
 
             <div className="form-group">
-              <label>Auxilio de Alimentación</label>
+              <label>Retencion En La fuente</label>
               <input
-                id="auxilioAlimentacion"
-                name="auxilioAlimentacion"
-                value={formData.auxilioAlimentacion}
+                id="retencionFuente"
+                name="retencionFuente"
+                value={formData.retencionFuente}
                 onChange={handleInputChange}
               />
             </div>
-
+            <div className="form-group">
+              <label>Deducciones</label>
+              <input
+                id="deducciones"
+                name="deducciones"
+                value={formData.deducciones}
+                onChange={handleInputChange}
+              />
+            </div>
             <div className="form-group">
               <label>Pensionado</label>
               <select
@@ -152,20 +159,6 @@ const PayrollCalculator = () => {
           <div className="results-container">
             <div className="results-grid">
               <div className="result-card">
-                <h3>Información Basica</h3>
-                <p>
-                  Remuneración Total:{" "}
-                  {formatCurrency(results.totalRemuneracion)}
-                </p>
-                <p>IBC: {formatCurrency(results.ibc)}</p>
-                <p>
-                  40% de la Remuneración:{" "}
-                  {formatCurrency(results.cuarentaPorciento)}
-                </p>
-                <p>Excedente: {formatCurrency(results.excedente)}</p>
-              </div>
-
-              <div className="result-card">
                 <h3>Seguridad Social y Parafiscales</h3>
                 <div className="result-content">
                   <p>
@@ -176,6 +169,8 @@ const PayrollCalculator = () => {
                     Salud Empleador:{" "}
                     {formatCurrency(results.seguridadSocial.saludEmpleador)}
                   </p>
+                  <p>IBC: {formatCurrency(results.seguridadSocial.ibc)}</p>
+                  <p>Excedente: {formatCurrency(results.seguridadSocial.excedente)}</p>
                   <p>
                     Pensión Trabajador:{" "}
                     {formatCurrency(results.seguridadSocial.pensionTrabajador)}
