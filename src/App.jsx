@@ -109,17 +109,6 @@ const PayrollCalculator = () => {
                 onChange={handleInputChange}
               />
             </div>
-
-            <div className="form-group">
-              <label>Auxilio de transporte</label>
-              <input
-                id="auxilioTransporte"
-                name="auxilioTransporte"
-                value={formData.auxilioTransporte}
-                onChange={handleInputChange}
-              />
-            </div>
-
             <div className="form-group">
               <label>Retencion En La fuente</label>
               <input
@@ -255,6 +244,10 @@ const PayrollCalculator = () => {
                   <p>
                     Deducciones:{" "}
                     {formatCurrency(results.proyecciones.deducciones)}
+                  </p>
+                  <p>
+                    Auxilio De Transporte:{" "}
+                    {formatCurrency(results.proyecciones.auxilioTransporte)}
                   </p>
                 </div>
               </div>
