@@ -1,11 +1,8 @@
 import React from "react";
 import { useState } from "react";
-
-import logo from "../../../assets/logo.png";
+import gomez from "../../../assets/Group 17.png";
 import "../../../components/SalaryCalculator.css";
-
 import Calculadora from "../../../assets/calculator-line.png";
-
 import { calcularNomina } from "../../../services/services.js";
 import Navbar from "../../UI/Navbar/Navbar.jsx";
 
@@ -141,6 +138,9 @@ const Formulario = () => {
               <img src={Calculadora} alt="icono" />
               Calcular Nómina
             </button>
+
+              <img className='gomez' src={gomez} alt="icono" />
+
           </div>
         </form>
       </div>

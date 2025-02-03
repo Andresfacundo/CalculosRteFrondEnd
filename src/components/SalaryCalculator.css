@@ -102,6 +102,9 @@ body{
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 50px;
   }
   button {
     /* width: 100%; */
@@ -116,11 +119,21 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-52%);
   }
   img{
     width: 25px;
-
   }
+  .nomina .gomez{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-40%);
+    width: 90px;
+  }
+
   /* Estilos de los resultados */
   .results-container {
     font-family: "Jost", serif;
@@ -138,16 +151,38 @@ body{
   .result-card {
     background: #f8f9fa;
     border-radius: 8px;
-    padding: 15px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
+    /* border: 2px solid red; */
+    
   }
   
   .result-card h3 {
+    text-align: center;
     color: #333;
     margin-bottom: 15px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #4A90E2;
+    border-bottom: 1px solid #889AA4;
   }
+  .result-card .gomezV{
+    display: flex;
+    align-items: center;
+    /* justify-content: end; */
+    /* border: 2px solid red; */
+    width: 100%;
+    position: relative;
+    height: 60px;
+  }
+
+  .result-card .gomezV img{
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-40%);
+    width: 90px;
+
+  }
+
   
   .result-content p {
     margin: 8px 0;
@@ -155,6 +190,7 @@ body{
     display: flex;
     justify-content: space-between;
   }
+  
   
   /* Estilos responsivos */
   @media (max-width: 768px) {
@@ -168,6 +204,7 @@ body{
     
     .results-grid {
       grid-template-columns: 1fr;
+      padding: 10px;
     }
   }
   
