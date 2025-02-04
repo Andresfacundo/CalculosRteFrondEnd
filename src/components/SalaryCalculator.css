@@ -11,9 +11,8 @@ body{
   font-weight: 400;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
   
-  
+
   }
 
   .container-img{
@@ -52,6 +51,8 @@ body{
   .container-button{
     display: flex;
     justify-content: space-around;
+    /* background-color: #DFBD7C; */
+    padding-bottom: 1rem;
   }
 
   .boxButton{
@@ -196,18 +197,19 @@ body{
   
   /* Estilos responsivos */
   @media (max-width: 768px) {
-    .calculator-container {
-      padding: 10px;
+
+    .calculator-card{
+      padding: 20px 15px;
+    }
+    .boxButton{
+      width: 33%;
+    }
+    button{
+      transform: translateX(-82%);
+      padding: 7px 0 7px 0;
+      width: 60%;
     }
     
-    .form-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .results-grid {
-      grid-template-columns: 1fr;
-      padding: 10px;
-    }
   }
   
   /* Animaciones */
