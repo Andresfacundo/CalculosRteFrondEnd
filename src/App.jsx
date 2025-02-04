@@ -3,6 +3,7 @@ import React from "react";
 import Formulario from "./components/Pages/Formulario/Formulario";
 import Resultados from "./components/Pages/Resultados/Resultados";
 import Logo from "./components/UI/Logo/Logo";
+import Comparar from "./components/Pages/Comparar/Comparar";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <Routes>
         <Route path="/" Component={Formulario} />
         <Route path="Resultados" Component={Resultados} />
+        <Route path="Comparar" Component={Comparar}/>
       </Routes>
     </>
   );

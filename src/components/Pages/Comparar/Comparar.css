@@ -1,0 +1,21 @@
+.box-navbar{
+    font-family: "Jost", serif;
+    font-optical-sizing: auto;
+    font-weight: 300;
+}
+.box-navbar .content-navbar{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.content-results{ 
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+.card-result{
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
+}
