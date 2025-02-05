@@ -5,7 +5,7 @@ import "../../../components/SalaryCalculator.css";
 import Calculadora from "../../../assets/calculator-line.png";
 import { calcularNomina } from "../../../services/services.js";
 import Navbar from "../../UI/Navbar/Navbar.jsx";
-
+import ok from"../../../assets/ok.png"
 const Formulario = () => {
   const [formData, setFormData] = useState({
     tipoSalario: "ordinario",
@@ -16,6 +16,7 @@ const Formulario = () => {
     auxilioAlimentacion: "",
     pensionado: "No",
   });
+  const[showAlert, setShowAlert] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -38,8 +39,9 @@ const Formulario = () => {
         deducciones: parseFloat(formData.deducciones) || 0,
         retencionFuente: parseFloat(formData.retencionFuente) || 0,
       });
-
       localStorage.setItem("Resultados", JSON.stringify(data));
+      setShowAlert(true);
+      setTimeout(() => setShowAlert(false),4000);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -48,6 +50,11 @@ const Formulario = () => {
   return (
     <div className="calculator-container">
       <h1>Calculadora Laboral</h1>
+      {showAlert && (
+        <div className='alert'>
+          <img src={ok} alt="icono" /> ¡Cálculo de Nómina realizado con éxito!
+        </div>
+      )}
       <div className="calculator-card">
         <form onSubmit={handleSubmit}>
             <div className="container-button">
