@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../../UI/Navbar/Navbar";
 import Parrafos from "../../UI/Parrafos/Parrafos";
 import gomez from '../../../assets/Group 17.png'
+import NotAvaible from "../../UI/NotAvaible/NotAvaible";
 
 const Resultados = () => {
   const [results, setResults] = useState(null); //Estado que almacena los resultados
@@ -14,14 +15,14 @@ const Resultados = () => {
   }, []);
   return (
     <>
-      {results && (
+      {results ? (
         <div className="results-container">
             <h1>Resultados</h1>
           <div className="results-grid">
             <div className="result-card">
             <div className="container-button">
                 <Navbar />
-              </div>
+            </div>
               <h3>Proyecciones</h3>
               <div className="result-content">
               <Parrafos content="Provisiones Prestaciones"results={results}content1="proyecciones" content2="provisionesPrestacionesSociales"/>
@@ -75,6 +76,11 @@ const Resultados = () => {
             </div>
           </div>
         </div>
+      ):(
+        <div className="no-results">
+          <NotAvaible/>
+        </div>
+
       )}
     </>
   );

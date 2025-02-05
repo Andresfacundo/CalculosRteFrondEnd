@@ -50,10 +50,10 @@ const Formulario = () => {
       <h1>Calculadora Laboral</h1>
       <div className="calculator-card">
         <form onSubmit={handleSubmit}>
-          <div className="form-grid">
             <div className="container-button">
               <Navbar />
             </div>
+          <div className="form-grid">
             <div className="form-group">
               <label>Tipo de salario</label>
               <select
