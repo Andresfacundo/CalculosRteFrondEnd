@@ -28,6 +28,7 @@ const Formulario = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       const data = await calcularNomina({
         ...formData,
@@ -39,7 +40,12 @@ const Formulario = () => {
         deducciones: parseFloat(formData.deducciones) || 0,
         retencionFuente: parseFloat(formData.retencionFuente) || 0,
       });
-      localStorage.setItem("Resultados", JSON.stringify(data));
+      const storedResults = localStorage.getItem("Resultados");
+      const resultArray = storedResults ? JSON.parse(storedResults) : [];
+      resultArray.push(data);
+      
+      localStorage.setItem("Resultados", JSON.stringify(resultArray));
+
       setShowAlert(true);
       setTimeout(() => setShowAlert(false),4000);
     } catch (error) {
@@ -56,10 +62,10 @@ const Formulario = () => {
         </div>
       )}
       <div className="calculator-card">
-        <form onSubmit={handleSubmit}>
             <div className="container-button">
               <Navbar />
             </div>
+        <form onSubmit={handleSubmit}>
           <div className="form-grid">
             <div className="form-group">
               <label>Tipo de salario</label>
@@ -141,7 +147,7 @@ const Formulario = () => {
             </div>
           </div>
           <div className="nomina">
-            <button type="submit">
+            <button  type="submit">
               <img src={Calculadora} alt="icono" />
               Calcular Nómina
             </button>

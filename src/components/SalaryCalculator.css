@@ -25,13 +25,7 @@ body{
   .container-img img{
     width: 250px;
   }
-  /* @keyframes fadeInOut{
-   
-  
-  
 
-    
-  } */
    @keyframes fadeInOut{
     from {
       opacity: 0;
@@ -153,8 +147,7 @@ body{
     position: relative;
     height: 50px;
   }
-  button {
-    /* width: 100%; */
+  .nomina button {
     padding: 12px;
     background-color: #DFBD7C;
     color: #000;
@@ -170,6 +163,7 @@ body{
     left: 50%;
     transform: translateX(-52%);
   }
+  
   img{
     width: 25px;
   }
@@ -188,11 +182,28 @@ body{
     font-weight: 400;
     margin-top: 30px;
   }
-  
+  .results-container .alert{
+    background-color: #35ad3b;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    color: #fff;
+    justify-content: space-around;
+    padding: 10px;
+    box-shadow: 0px  0px 11px 3px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: 9px;
+    top: 1rem;
+    position: fixed;
+
+  }
+
   .results-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
+    padding-bottom: 2rem;
   }
   
   .result-card {
@@ -203,6 +214,18 @@ body{
     
     
   }
+  .result-card .delete-button{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+  }
+  .result-card button{
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    cursor: pointer;
+    
+  }
   
   .result-card h3 {
     text-align: center;
@@ -210,6 +233,7 @@ body{
     margin-bottom: 15px;
     padding-bottom: 10px;
     border-bottom: 1px solid #889AA4;
+    margin-top: 0;
   }
   .result-card .gomezV{
     display: flex;
@@ -246,7 +270,7 @@ body{
       padding: 20px 15px;
     }
    
-    button{
+    .nomina button{
       transform: translateX(-82%);
       padding: 7px 0 7px 0;
       width: 60%;

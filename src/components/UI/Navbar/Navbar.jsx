@@ -21,13 +21,13 @@ const Navbar = () => {
         content="Resultados"
         route="/Resultados"
       />
-      {/* <Boton
+      <Boton
         route="/Comparar"
         styleB="boxButton"
         className="boton"
         img={Comparar}
         content="Comparar"
-      /> */}
+      />
     </>
   );
 };

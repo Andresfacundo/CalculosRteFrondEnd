@@ -12,7 +12,7 @@
 .content-navbar{
     display: flex;
     /* border: 2px solid red; */
-    width: 80%;
+    width: 80%;justify-content: space-around;
   }
 
 .boxTittle{
