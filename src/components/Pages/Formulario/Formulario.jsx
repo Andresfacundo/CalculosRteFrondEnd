@@ -15,6 +15,7 @@ const Formulario = () => {
     auxilioTransporte: "",
     auxilioAlimentacion: "",
     pensionado: "No",
+    exonerado: "No",
   });
   const[showAlert, setShowAlert] = useState(false);
 
@@ -139,6 +140,18 @@ const Formulario = () => {
                 id="pensionado"
                 name="pensionado"
                 value={formData.pensionado}
+                onChange={handleInputChange}
+              >
+                <option value="No">No</option>
+                <option value="Si">Sí</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Exonerado</label>
+              <select
+                id="exonerado"
+                name="exonerado"
+                value={formData.exonerado}
                 onChange={handleInputChange}
               >
                 <option value="No">No</option>
