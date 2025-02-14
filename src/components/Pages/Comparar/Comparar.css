@@ -17,6 +17,7 @@
 }
 .box-input{
     width: 100%;
+    box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
 }
 .content-results{ 
     display: grid;
