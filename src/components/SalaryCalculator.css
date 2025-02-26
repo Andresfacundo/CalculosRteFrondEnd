@@ -226,6 +226,13 @@ body{
     cursor: pointer;
     
   }
+
+  .content-ibc{
+    display: flex;
+    justify-content: center;
+    /* border-bottom:1px solid #333 ; */
+    border-bottom: 1px solid #889AA4
+  }
   
   .result-card h3 {
     text-align: center;
@@ -261,8 +268,55 @@ body{
     display: flex;
     justify-content: space-between;
   }
+
+  .result-ibc span{
+    display: flex;
+    padding-top: 10px;
+    margin-top: 10px;
+    justify-content: center;
+
+    
+  }
+  .result-ibc{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    
+  }
+  .result-ibc p{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .title{
+    display: flex;
+    justify-content: space-around;
+
+  }
+  .title h3{
+    border: none;
+    margin: 0;
+    
+  }
+  .result{
+    border-top: 1px solid #889AA4;
+    display: flex;
+    justify-content: space-around;
+  }
+ .result p {
+   display: flex;
+    align-items: center;
+    justify-content: center;
+  text-align: center;
+ }
+  .result span{
+    
+    width: 100%;
+    
+  }
   
-  
+    
   /* Estilos responsivos */
   @media (max-width: 768px) {
 

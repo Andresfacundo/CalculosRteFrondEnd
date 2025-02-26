@@ -2,15 +2,21 @@ import React from 'react'
 import  formatCurrency  from '../../../utils/formatUtils';
 
 
-const Parrafos = ({content,results,content1,content2}) => {
-      const value = Array.isArray(results)
-      ? results?.[results.length -1]?.[content1]?.[content2] || 0 
-      : results?.[content1]?.[content2] || 0; 
+const Parrafos = ({ content, results, content1, content2 }) => {
+  let value = 0;
+
+  if (Array.isArray(results)) {
+    value = results?.[results.length - 1]?.[content1]?.[content2] || 0;
+  } else if (typeof results === 'string') {
+    value = results;
+  } else {
+    value = results?.[content1]?.[content2] || 0;
+  }
 
   return (
-    <p>{content}<span>{ formatCurrency(value)}</span></p>
-     
-  )
-}
+    <p>{content}<span>{typeof value === 'number' ? formatCurrency(value) : value}</span></p>
+  );
+};
+
 
 export default Parrafos;

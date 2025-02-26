@@ -39,10 +39,83 @@ const Resultados = () => {
           )}
           {results.map((result, index) => (
             <div className="results-grid">
-                <div className="result-card">
+              <div className="result-card">
                   <div className="delete-button">
                     <button onClick={() => handleDeleteResult(index)}><img src={deleteIcon}/></button>
                   </div>
+                <h3>Resumen de Datos</h3>
+                <div className="result-content">
+                  <Parrafos content="Tipo de Salario" results={result} content1="calculations" content2="tipoSalario"/>
+                  <Parrafos content="Salario" results={result} content1="calculations" content2="salario"/>
+                  <Parrafos content="Otros Pagos Salariales" results={result} content1="calculations" content2="otrosPagosSalariales"/>
+                  <Parrafos content="Otros Pagos No Salariales" results={result} content1="calculations" content2="otrosPagosNoSalariales"/>
+                  <Parrafos content="Retención en la Fuente" results={result} content1="calculations" content2="retencionFuente"/>
+                  <Parrafos content="Deducciones" results={result} content1="calculations" content2="deducciones"/>
+                  <Parrafos content="Pensionado" results={result} content1="calculations" content2="pensionado"/>
+                  <Parrafos content="Exonerado" results={result} content1="calculations" content2="exonerado"/>
+                </div>
+                <div className="gomezV">
+                    <img src={gomez} alt="icono" />
+                </div>
+
+              </div>
+              <div className="result-card">
+                <h3>Seguridad Social y Parafiscales</h3>
+                <div className="content-ibc">
+                  <Parrafos content="IBC ="results={result}content1="seguridadSocial"content2="ibc"/>
+                </div>
+                <div className="result-ibc">
+                  <Parrafos content="Salario" results={result}content1="calculations" content2="salario"/>
+                  <Parrafos content="Otros Pagos Salariales" results={result}content1="calculations" content2="otrosPagosSalariales"/>
+                  <Parrafos content="Excedente" results={result}content1="calculations" content2="excedente"/>
+                </div>
+              </div>
+              <div className="result-card">
+                <div className="title">
+                  <h3>Concepto</h3>
+                  <h3>Empleador</h3>
+                  <h3>Trabajador</h3>
+                </div>
+                <div className="result">
+                <div >
+                  <p>Salud</p>
+                  <p>Pension</p>
+                  <p>FSP</p>
+                  <p>Riesgos</p>
+                  <p>CCF</p>
+                  <p>SENA</p>
+                  <p>ICBF</p>
+                  <p><b>Total</b></p>
+                </div>
+                <div >
+                  <Parrafos  results={result} content1="seguridadSocial" content2="saludEmpleador"/>
+                  <Parrafos  results={result} content1="seguridadSocial" content2="pensionEmpleador"/>
+                  <Parrafos  results={result} content1="seguridadSocial" content2="FSP"/>
+                  <Parrafos  results={result} content1="seguridadSocial" content2="riesgosLaborales"/>
+                  <Parrafos  results={result} content1="seguridadSocial" content2="cajaCompensacion"/>
+                  <Parrafos  results={result} content1="seguridadSocial" content2="sena"/>
+                  <Parrafos  results={result} content1="seguridadSocial" content2="icbf"/>
+                  <Parrafos  results={result} />
+                </div>
+                <div >
+                  <Parrafos  results={result} content1="seguridadSocial" content2="saludTrabajador"/>
+                  <Parrafos  results={result} content1="seguridadSocial" content2="pensionEmpleador"/>
+                  <Parrafos  results={result} />
+                  <Parrafos  results={result} />
+                  <Parrafos  results={result} />
+                  <Parrafos  results={result} />
+                  <Parrafos  results={result} />
+                  <Parrafos  results={result} />
+
+                </div>
+                </div>
+                <div className="gomezV">
+                    <img src={gomez} alt="icono" />
+                </div>
+
+              </div>
+              
+                <div className="result-card">
                   <h3>Proyecciones </h3>
                   <div key={index} className="result-content">
                     <Parrafos content="Provisiones Prestaciones"results={result}content1="proyecciones"content2="provisionesPrestacionesSociales"/>
@@ -60,26 +133,6 @@ const Resultados = () => {
                     <img src={gomez} alt="icono" />
                   </div>
                 </div>
-                <div className="result-card">
-                  <h3>Seguridad Social y Parafiscales</h3>
-                  <div className="result-content">
-                    <Parrafos content="Salud Trabajador:"results={result}content1="seguridadSocial"content2="saludTrabajador"/>
-                    <Parrafos content="Salud Empleador:"results={result}content1="seguridadSocial"content2="saludEmpleador"/>
-                    <Parrafos content="IBC:"results={result}content1="seguridadSocial"content2="ibc"/>
-                    <Parrafos content="Excedente:"results={result} content1="seguridadSocial"content2="excedente"/>
-                    <Parrafos content="Pension Trabajador:"results={result}content1="seguridadSocial"content2="pensionTrabajador"/>
-                    <Parrafos content="Pension Empleador:"results={result}content1="seguridadSocial"content2="pensionEmpleador"/>
-                    <Parrafos content="FSP:" results={result} content1="seguridadSocial"content2="FSP"/>
-                    <Parrafos content="Riesgos Laborales:" results={result} content1="seguridadSocial" content2="riesgosLaborales"/>
-                    <Parrafos content="SENA:" results={result} content1="seguridadSocial" content2="sena"/>
-                    <Parrafos content="ICBF:" results={result}content1="seguridadSocial" content2="icbf"/>
-                    <Parrafos content="Caja Compensación:" results={result}content1="seguridadSocial" content2="cajaCompensacion"/>
-                  </div>
-                  <div className="gomezV">
-                    <img src={gomez} alt="icono" />
-                  </div>
-                </div>
-
                 <div className="result-card">
                   <h3>Prestaciones Sociales y Vacaciones</h3>
                   <div className="result-content">

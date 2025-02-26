@@ -8,14 +8,14 @@ import Navbar from "../../UI/Navbar/Navbar.jsx";
 import ok from"../../../assets/ok.png"
 const Formulario = () => {
   const [formData, setFormData] = useState({
-    tipoSalario: "ordinario",
+    tipoSalario: "Ordinario",
     salario: "",
     otrosPagosSalariales: "",
     otrosPagosNoSalariales: "",
     auxilioTransporte: "",
     auxilioAlimentacion: "",
     pensionado: "No",
-    exonerado: "No",
+    exonerado: "Si",
   });
   const[showAlert, setShowAlert] = useState(false);
 
@@ -76,9 +76,9 @@ const Formulario = () => {
                 value={formData.tipoSalario}
                 onChange={handleInputChange}
               >
-                <option value="ordinario">Ordinario</option>
-                <option value="integral">Integral</option>
-                <option value="medio tiempo">Medio Tiempo</option>
+                <option value="Ordinario">Ordinario</option>
+                <option value="Integral">Integral</option>
+                <option value="Medio tiempo">Medio Tiempo</option>
               </select>
             </div>
 
