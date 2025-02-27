@@ -1,6 +1,6 @@
 /* Estilos generales */
 *{
-  box-sizing: border-box
+  box-sizing: border-box;
 }
 body{
   background-color: #eae9ecb2;
@@ -177,7 +177,7 @@ body{
 
   /* Estilos de los resultados */
   .results-container {
-    font-family: "Jost", serif;
+    font-family: "Jost", serif ;
     font-optical-sizing: auto;
     font-weight: 400;
     margin-top: 30px;
@@ -207,6 +207,7 @@ body{
   }
   
   .result-card {
+    color: #333;
     background: #f8f9fa;
     border-radius: 8px;
     padding: 20px;
@@ -311,9 +312,24 @@ body{
   text-align: center;
  }
   .result span{
-    
+    /* border: 2px solid red; */
+  
+  }
+  .children{
+    /* border: 2px solid red; */
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+  .box{
+   border-top:1px solid #889AA4;
+
+  }
+
+  .box-result{
+    display: flex;
+    justify-content: space-around;
     width: 100%;
-    
   }
   
     
