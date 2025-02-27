@@ -44,15 +44,27 @@ const Resultados = () => {
                     <button onClick={() => handleDeleteResult(index)}><img src={deleteIcon}/></button>
                   </div>
                 <h3>Resumen de Datos</h3>
-                <div className="result-content">
-                  <Parrafos content="Tipo de Salario" results={result} content1="calculations" content2="tipoSalario"/>
-                  <Parrafos content="Salario" results={result} content1="calculations" content2="salario"/>
-                  <Parrafos content="Otros Pagos Salariales" results={result} content1="calculations" content2="otrosPagosSalariales"/>
-                  <Parrafos content="Otros Pagos No Salariales" results={result} content1="calculations" content2="otrosPagosNoSalariales"/>
-                  <Parrafos content="Retención en la Fuente" results={result} content1="calculations" content2="retencionFuente"/>
-                  <Parrafos content="Deducciones" results={result} content1="calculations" content2="deducciones"/>
-                  <Parrafos content="Pensionado" results={result} content1="calculations" content2="pensionado"/>
-                  <Parrafos content="Exonerado" results={result} content1="calculations" content2="exonerado"/>
+                <div className="result">
+                  <div className="children">
+                    <p>Tipo de Salario</p>
+                    <p>Salario</p>
+                    <p>Otros Pagos Salariales</p>
+                    <p>Otros Pagos No Salariales</p>
+                    <p>Retención en la Fuente</p>
+                    <p>Deducciones</p>
+                    <p>Pensionado</p>
+                    <p>Exonerado</p>
+                  </div>
+                  <div className="children2">
+                  <Parrafos  results={result} content1="calculations" content2="tipoSalario"/>
+                  <Parrafos  results={result} content1="calculations" content2="salario"/>
+                  <Parrafos  results={result} content1="calculations" content2="otrosPagosSalariales"/>
+                  <Parrafos  results={result} content1="calculations" content2="otrosPagosNoSalariales"/>
+                  <Parrafos  results={result} content1="calculations" content2="retencionFuente"/>
+                  <Parrafos  results={result} content1="calculations" content2="deducciones"/>
+                  <Parrafos  results={result} content1="calculations" content2="pensionado"/>
+                  <Parrafos  results={result} content1="calculations" content2="exonerado"/>
+                  </div>
                 </div>
                 <div className="gomezV">
                     <img src={gomez} alt="icono" />
@@ -66,8 +78,8 @@ const Resultados = () => {
                 </div>
                 <div className="result-ibc">
                   <Parrafos content="Salario +" results={result}content1="calculations" content2="salario"/>
-                  <Parrafos content="Otros Pagos Salariales  +" results={result}content1="calculations" content2="otrosPagosSalariales"/>
-                  <Parrafos content="Excedente" results={result}content1="calculations" content2="excedente"/>
+                  <Parrafos content="Otros Pagos Salariales  " results={result} content1="calculations" content2="otrosPagosSalariales"/>
+                  <Parrafos content="+ Excedente" results={result} content1="calculations" content2="excedente" />
                 </div>
               </div>
               <div className="result-card">
@@ -87,7 +99,7 @@ const Resultados = () => {
                   <p>ICBF</p>
                   <p><b>Total</b></p>
                 </div>
-                <div className="children">
+                <div className="children2">
                   <Parrafos  results={result} content1="seguridadSocial" content2="saludEmpleador"/>
                   <Parrafos  results={result} content1="seguridadSocial" content2="pensionEmpleador"/>
                   <Parrafos  results={result} content1="seguridadSocial" content2="FSP"/>
@@ -97,7 +109,7 @@ const Resultados = () => {
                   <Parrafos  results={result} content1="seguridadSocial" content2="icbf"/>
                   <Parrafos  results={result} content1="seguridadSocial" content2="totalEmpleador"/>
                 </div>
-                <div className="children">
+                <div className="children2">
                   <Parrafos  results={result} content1="seguridadSocial" content2="saludTrabajador"/>
                   <Parrafos  results={result} content1="seguridadSocial" content2="pensionTrabajador"/>
                   <Parrafos  results={result} />
@@ -121,14 +133,14 @@ const Resultados = () => {
                 </div>
                 <div className="box">
                   <div className="box-result">
-                    <div className="">
+                    <div className="children">
                       <p>Provisiones</p>
                       <p>Aportes</p>
                       <p>Pago neto</p>
                       <p>Total a pagar</p>
                       <p>Costo total</p>
                     </div>
-                    <div className="result-proyecciones">
+                    <div className="children2">
                       <Parrafos results={result}content1="proyecciones" content2="provisionesPrestacionesSociales" />
                       <Parrafos results={result}content1="proyecciones" content2="aportesEmpleador" />
                       <Parrafos results={result}content1="proyecciones" content2="pagoNeto" />
@@ -147,14 +159,14 @@ const Resultados = () => {
                 </div>
                 <div className="box">
                   <div className="box-result">
-                    <div className="">
+                    <div className="children">
                       <p>Total ingresos</p>
                       <p>Aportes</p>
                       {/* <p>ReteFuente</p> */}
                       <p>Deducciones</p>
                       <p>Pago neto</p>          
                     </div>
-                  <div className="result-proyecciones">
+                  <div className="children2">
                     <Parrafos results={result}content1="calculations" content2="totalIngresos" />
                     <Parrafos results={result}content1="proyecciones" content2="aportesTrabajador" />
                     {/* <Parrafos results={result} /> */}
@@ -170,11 +182,20 @@ const Resultados = () => {
               </div>
                 <div className="result-card">
                   <h3>Prestaciones Sociales y Vacaciones</h3>
-                  <div className="result-content">
-                    <Parrafos content="Prima de Servicios:" results={result} content1="prestacionesSociales" content2="primaServicios"/>
-                    <Parrafos content="Cesantías:" results={result} content1="prestacionesSociales" content2="cesantias"/>
-                    <Parrafos content="Intereses Cesantias:" results={result} content1="prestacionesSociales" content2="interesesCesantias"/>
-                    <Parrafos content="Vacaciones:" results={result} content1="prestacionesSociales"content2="vacaciones"/>
+                  <div className="result">
+                    <div className="children">
+                      <p>Prima de Servicios:</p>
+                      <p>Cesantías:</p>
+                      <p>Intereses Cesantias:</p>
+                      <p>Vacaciones:</p>
+                    </div>
+                    <div className="children2">
+                      <Parrafos  results={result} content1="prestacionesSociales" content2="primaServicios"/>
+                      <Parrafos  results={result} content1="prestacionesSociales" content2="cesantias"/>
+                      <Parrafos  results={result} content1="prestacionesSociales" content2="interesesCesantias"/>
+                      <Parrafos  results={result} content1="prestacionesSociales"content2="vacaciones"/>
+
+                    </div>
                   </div>
                   <div className="gomezV">
                     <img src={gomez} alt="icono" />
