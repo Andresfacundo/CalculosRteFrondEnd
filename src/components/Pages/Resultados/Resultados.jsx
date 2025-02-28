@@ -75,6 +75,8 @@ const Resultados = () => {
 
               </div>
 
+
+
               <div className="result-card">
                 <h3>Seguridad Social y Parafiscales</h3>
                 <div className="content-ibc">
@@ -90,6 +92,46 @@ const Resultados = () => {
                   <Parrafos results={result} content1="calculations" content2="otrosPagosSalariales"/>
                   <Parrafos results={result} content1="calculations" content2="excedente" />
                 </div>
+              </div>
+              <div className="result-card">
+                <h2>Proyecciones</h2>
+                <div className="title">
+                  <h3>Empleador</h3>
+                  <h3>Trabajador</h3>
+                </div>
+                <div className="result">
+                  <div className="children">
+                    <p>Provisiones</p>
+                    <p>Aportes</p>
+                    <p>Pago neto</p>
+                    <p>Total a pagar</p>
+                    <p>Costo total</p>
+
+                  </div>
+                  <div className="children2">
+                    <Parrafos results={result}content1="proyecciones" content2="provisionesPrestacionesSociales" />
+                    <Parrafos results={result}content1="proyecciones" content2="aportesEmpleador" />
+                    <Parrafos results={result}content1="proyecciones" content2="pagoNeto" />
+                    <Parrafos results={result}content1="proyecciones" content2="totalPagar" />
+                    <Parrafos results={result}content1="proyecciones" content2="costoTotalEmpleador" />
+
+                  </div>
+                  <div className="children">
+                    <p>Total Ingresos</p>
+                    <p>Aportes</p>
+                    <p>ReteFuente</p>
+                    <p>Deducciones</p>
+                    <p>Pago Neto</p>
+                  </div>
+                <div className="children2">
+                    <Parrafos results={result}content1="calculations" content2="totalIngresos" />
+                    <Parrafos results={result}content1="proyecciones" content2="aportesTrabajador" />
+                    <Parrafos results={result} />
+                    <Parrafos results={result}content1="proyecciones" content2="deducciones" />
+                    <Parrafos results={result}content1="proyecciones" content2="pagoNetoTrabajador" />
+                  </div>
+                </div>
+
               </div>
 
 
@@ -138,7 +180,7 @@ const Resultados = () => {
 
               </div>
 
-              <div className="result-card">
+              {/* <div className="result-card">
                 <h3>Proyecciones</h3>
                 <div className="title">
                   <h3>Empleador</h3>
@@ -175,14 +217,14 @@ const Resultados = () => {
                     <div className="children">
                       <p>Total ingresos</p>
                       <p>Aportes</p>
-                      {/* <p>ReteFuente</p> */}
+                      {/* <p>ReteFuente</p> 
                       <p>Deducciones</p>
                       <p>Pago neto</p>          
                     </div>
                   <div className="children2">
                     <Parrafos results={result}content1="calculations" content2="totalIngresos" />
                     <Parrafos results={result}content1="proyecciones" content2="aportesTrabajador" />
-                    {/* <Parrafos results={result} /> */}
+                    {/* <Parrafos results={result} /> 
                     <Parrafos results={result}content1="proyecciones" content2="deducciones" />
                     <Parrafos results={result}content1="proyecciones" content2="pagoNetoTrabajador" />
                   </div>
@@ -192,7 +234,7 @@ const Resultados = () => {
                     <img src={gomez} alt="icono" />
                 </div>
                 
-              </div>
+              </div> */}
                 <div className="result-card">
                   <h3>Prestaciones Sociales y Vacaciones</h3>
                   <div className="result">
