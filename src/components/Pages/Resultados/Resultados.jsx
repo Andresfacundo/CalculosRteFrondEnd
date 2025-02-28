@@ -154,7 +154,7 @@ const Resultados = () => {
                     <div className="children2">
                       <Parrafos results={result}content1="proyecciones" content2="provisionesPrestacionesSociales" />
                       <Parrafos results={result}content1="proyecciones" content2="aportesEmpleador" />
-                      <Parrafos results={result}content1="proyecciones" content2="pagoNeto" />
+                      <Parrafos results={result}content1="proyecciones" content2="pagoNetoTrabajador" />
                       <Parrafos results={result}content1="proyecciones" content2="totalPagar" />
                       <Parrafos results={result}content1="proyecciones" content2="costoTotalEmpleador" />
                     </div>
