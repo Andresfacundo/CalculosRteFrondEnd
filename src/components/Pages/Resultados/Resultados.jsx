@@ -81,7 +81,7 @@ const Resultados = () => {
                 </div>
                 <div className="result">
                   <p className="p1">Salario  <span className="p2"> + </span></p>
-                  <p className="p1">Otros Pagos Salario <span className="p2">+</span></p>
+                  <p className="p1">Otros Pagos Salariales <span className="p2">+</span></p>
                   <p className="p1">Excedente</p>
                 </div>
                 <div className="result1">
