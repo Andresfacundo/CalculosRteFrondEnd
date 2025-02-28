@@ -212,7 +212,7 @@ body{
     color: #333;
     background: #f8f9fa;
     border-radius: 8px;
-    padding: 20px;
+    padding: 11px;
     box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
     height: fit-content;
     display: flex;
@@ -315,7 +315,7 @@ body{
   }
   .result{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
   }
  .result p {
    display: flex;
@@ -363,6 +363,12 @@ body{
       width: 60%;
     }
     
+  }
+  @media (max-width: 480px){
+    .results-grid{
+      grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+    }
+
   }
   
   /* Animaciones */
