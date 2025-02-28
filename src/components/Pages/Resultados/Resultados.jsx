@@ -213,7 +213,7 @@ const Resultados = () => {
                     <img src={gomez} alt="icono" />
                   </div>
                 </div>
-                <div>aqui</div>
+              
              
             </div>
             </div>
