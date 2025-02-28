@@ -37,7 +37,9 @@ const Resultados = () => {
              <img src={ok} alt="icono" /> ¡Borrado con Exito!
             </div>
           )}
-          {results.map((result, index) => (
+          {results.map((result, index) => (       
+            <div key={index}>  
+            <h2>Resultados {results.length - index}</h2>
             <div className="results-grid">
               <div className="result-card">
                   <div className="delete-button">
@@ -212,6 +214,7 @@ const Resultados = () => {
                   </div>
                 </div>
              
+            </div>
             </div>
           ))}
         </div>
