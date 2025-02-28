@@ -71,17 +71,25 @@ const Resultados = () => {
                 </div>
 
               </div>
+
               <div className="result-card">
                 <h3>Seguridad Social y Parafiscales</h3>
                 <div className="content-ibc">
                   <Parrafos content="IBC ="results={result}content1="seguridadSocial"content2="ibc"/>
                 </div>
-                <div className="result-ibc">
-                  <Parrafos content="Salario +" results={result}content1="calculations" content2="salario"/>
-                  <Parrafos content="Otros Pagos Salariales  " results={result} content1="calculations" content2="otrosPagosSalariales"/>
-                  <Parrafos content="+ Excedente" results={result} content1="calculations" content2="excedente" />
+                <div className="result">
+                  <p className="p1">Salario  <span className="p2"> + </span></p>
+                  <p className="p1">Otros Pagos Salario <span className="p2">+</span></p>
+                  <p className="p1">Excedente</p>
+                </div>
+                <div className="result1">
+                  <Parrafos results={result}content1="calculations" content2="salario"/>
+                  <Parrafos results={result} content1="calculations" content2="otrosPagosSalariales"/>
+                  <Parrafos results={result} content1="calculations" content2="excedente" />
                 </div>
               </div>
+
+
               <div className="result-card">
                 <div className="title">
                   <h3>Concepto</h3>
@@ -126,6 +134,7 @@ const Resultados = () => {
                 </div>
 
               </div>
+
               <div className="result-card">
                 <h3>Proyecciones</h3>
                 <div className="title">
@@ -153,6 +162,7 @@ const Resultados = () => {
                     <img src={gomez} alt="icono" />
                 </div>
               </div>
+
               <div className="result-card">
                 <div className="title">
                   <h3>Trabajador</h3>

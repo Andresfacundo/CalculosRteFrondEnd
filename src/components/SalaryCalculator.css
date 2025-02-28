@@ -295,6 +295,7 @@ body{
     justify-content: space-around;
     text-align: center;
     align-items: center;
+    border: 2px solid red;
     
   }
   .result-ibc p{
@@ -317,6 +318,23 @@ body{
     display: flex;
     justify-content: space-around;
   }
+  .result .p1 {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  .result1{
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .result1 p{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+
  .result p {
    display: flex;
     align-items: center;
