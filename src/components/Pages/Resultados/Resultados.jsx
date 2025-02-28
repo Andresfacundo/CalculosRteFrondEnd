@@ -38,6 +38,9 @@ const Resultados = () => {
             </div>
           )}
           {results.map((result, index) => (
+           <div key={index}>
+            <h2>Resultado {results.length - index}</h2>
+            
             <div className="results-grid">
               <div className="result-card">
                   <div className="delete-button">
@@ -212,6 +215,7 @@ const Resultados = () => {
                   </div>
                 </div>
              
+            </div>
             </div>
           ))}
         </div>
