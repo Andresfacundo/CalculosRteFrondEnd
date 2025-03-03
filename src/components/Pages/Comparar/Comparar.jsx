@@ -3,6 +3,7 @@ import Navbar from "../../UI/Navbar/Navbar";
 import "./Comparar.css";
 import Parrafos from "../../UI/Parrafos/Parrafos";
 import formatCurrency from "../../../utils/formatUtils";
+import CardGraphic from "../../UI/CardGraphic/CardGraphic";
 
 const Comparar = () => {
     const [results, setResults] = useState([]); //Estado que almacena los resultados
@@ -63,7 +64,7 @@ const Comparar = () => {
       </div>
       <div className="content-compare">
         <div className="box-select-compare">
-          <h3>Calculo Actual</h3>
+          <h3>Actual</h3>
           {/* <label for="opciones"></label> */}
           <select className="box-input" onChange={(e) => handleSelectChange(e, "actual")}>
             <option value='-1'>--Seleccione--</option>
@@ -73,7 +74,7 @@ const Comparar = () => {
           </select>
         </div>
         <div className="box-select-compare">
-          <h3>Calculo Anterior</h3>
+          <h3>Proyectado</h3>
           {/* <label for="opciones"></label> */}
           <select className="box-input" onChange={(e) => handleSelectChange(e,"anterior")}>
             <option value='-1'>--Seleccione--</option>
@@ -82,6 +83,17 @@ const Comparar = () => {
             ))};
           </select>
         </div>
+      </div>
+
+      <div className="content-graphic">
+        <h2>Resumen Comparativo</h2>
+        <div>
+          <CardGraphic content="Costo Total Empleador" content2="" content3=""/>
+          <CardGraphic content="Pago Neto Trabajador" content2="" content3=""/>  
+        </div>
+
+
+
       </div>
       
       <div className="content-results">
