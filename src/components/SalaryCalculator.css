@@ -5,14 +5,74 @@
 body{
   background-color: #eae9ecb2;
 }
-.calculator-container {
-  font-family: "Jost", serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  max-width: 1200px;
-  margin: 0 auto;
-  
 
+  /* Estilos de los resultados */
+  .results-container {
+    font-family: "Jost", serif ;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    margin-top: 30px;
+  }
+  .results-container .alert{
+    background-color: #889AA4;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    color: #fff;
+    justify-content: space-around;
+    padding: 10px;
+    box-shadow: 0px  0px 11px 3px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    right: 9px;
+    top: 1rem;
+    position: fixed;
+  }
+
+  .container-button{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 1rem;
+  }
+  .results-grid {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(2px, 1fr)); */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    padding-bottom: 2rem;
+  }
+
+  .result-card{
+    color: #333;
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 11px;
+    box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
+    display: flex;
+    flex-direction: column;
+  }
+  .result-card .delete-button{
+    display: flex;
+    justify-content: flex-end;
+    position: relative;
+  }
+  .result-card button{
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    top: 5px;
+    cursor: pointer;
+
+  }
+  .result-card h2{
+    border-bottom: 1px solid #889AA4;
+  }
+  h2{
+    margin: 0;
+    text-align: center;
+    padding-bottom: 1rem;
+    
   }
 
   .container-img{
@@ -39,196 +99,34 @@ body{
 
    }
 
-  .calculator-container .alert{
-    background-color: #889AA4;
-    /* background-color: #DFBD7C; */
-    border-radius: 5px;
-    text-align: center;
-    align-items: center;
-    display: flex;
-    color: #fff;
-    justify-content: space-around;
-    padding: 10px;
-    box-shadow: 0px  0px 11px 3px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    right: 9px;
-    top: 1rem;
-    position: fixed;
-    color: #fff;   
-    animation: fadeInOut 0.6s ease-in-out;
-    /* animation: fadeInOut 2s ease-in-out */
-    
-    
-  }
-  
-  
-  .calculator-card {
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
-
-  }
-  
-  h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-  }
-  
-  /* Estilos del formulario */
-  .form-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-    gap: 20px;
-    margin-bottom: 20px;
-  
-  }
-  .container-button{
-    
-    display: flex;
-    justify-content: space-around;
-    /* background-color: #DFBD7C; */
-    padding-bottom: 1rem;
-  }
-
-  .boxButton{
-    width: 33%;
-     justify-content: center; 
-     display: flex; 
-
-  }
- 
-
-  .boton{
-    display: flex;
-    align-items: center;
-    background-color: #DFBD7C;
-    width: 98%;
-    height: auto;
-    padding: .2rem;
-    border-radius: 5px;
-    color: #000;
-    text-decoration: none;
-    justify-content: center;
-  
-  }
-  .boton img{
-    width: 25px;
-  }
-  
-  .form-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-bottom: 8px;
-    color: #555;
-    font-weight: 500;
-  }
-  
-  input, select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  input:focus, select:focus {
-    outline: none;
-    border-color: #4A90E2;
-    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
-  }
-  .nomina{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    height: 50px;
-  }
-  .nomina button {
-    padding: 12px;
-    background-color: #DFBD7C;
-    color: #000;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-52%);
-  }
-  
-  img{
-    width: 25px;
-  }
-  .nomina .gomez{
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-40%);
-    width: 90px;
-  }
-
-  /* Estilos de los resultados */
-  .results-container {
-    font-family: "Jost", serif ;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    margin-top: 30px;
-  }
-  .results-container .alert{
-    background-color: #889AA4;
-    border-radius: 5px;
-    text-align: center;
-    align-items: center;
-    display: flex;
-    color: #fff;
-    justify-content: space-around;
-    padding: 10px;
-    box-shadow: 0px  0px 11px 3px rgba(0, 0, 0, 0.1);
-    position: absolute;
-    right: 9px;
-    top: 1rem;
-    position: fixed;
-
-  }
-
-  .results-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 20px;
-    padding-bottom: 2rem;
-  }
-  
-  .result-card{
+  .result-parafiscales{
     color: #333;
     background: #f8f9fa;
     border-radius: 8px;
+    border-radius: 8px;
     padding: 11px;
     box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
-    height: fit-content;
+    display: flex;
+    flex-direction: column;    
+  }
+  .result-parafiscales h2{
+    border-bottom: 1px solid #889AA4;
+
+  }
+  .box-parafiscales{
+    display: flex;
+  }
+  .box-concepto{
     display: flex;
     flex-direction: column;
-  
-        
-  }
-  .result-card h2{
-    border-bottom: 1px solid #889AA4;
-    /* margin: 20px 20px 20px 20px;  */
-    padding-bottom: 10px;
-    margin-top: 8px;
-    
-  
-    
+    width: 100%;
 
+  }
+  
+  .result-parafiscales h3{
+    padding-bottom: 14px;
+    margin-bottom: 0;margin-top: 14px;
+    
   }
 
   .operador-plus {
@@ -238,54 +136,76 @@ body{
     font-weight: bold;
     margin: 0 5px;
   }
-  .result-card .delete-button{
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-  }
-  .result-card button{
-    border: none;
-    background-color: transparent;
-    position: absolute;
-    cursor: pointer;
-    
-  }
+
 
   .content-ibc{
     display: flex;
     justify-content: center;
-    /* border-bottom:1px solid #333 ; */
-    border-bottom: 1px solid #889AA4
+    /* border: 2px solid red; */
+
+    width: 100%;
+    border-bottom: 1px solid #889AA4;
+    /* border-right: 1px solid #889AA4 ; */
+  }
+  .box-ibc{
+    display: flex;
+    justify-content: space-around;
+    /* border-right: 1px solid #889AA4; */
+    width: 100%;
+  }
+  .item-ibc{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .item-ibc p:nth-child(3){
+    margin: 7px 0 12px 0;
+  }
+  .item-ibc span:nth-child(2){
+    margin-top: 3px;
+    width: 100%;
   }
   
-  .result-card h3 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 15px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #889AA4;
-    margin-top: 0;
+  .result-ibc .operator {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
+  .result-ibc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .resultados{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+  
+  }
+
   .result-card .gomezV{
     display: flex;
-    align-items: center;
-    /* justify-content: end; */
-    /* border: 2px solid red; */
-    width: 100%;
-    position: relative;
-    height: 60px;
+    justify-content: end;
   }
-
-  .result-card .gomezV img{
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-40%);
-    width: 90px;
-
-  }
-
   
+  .result-card .gomezV img{
+    margin-right: 1rem;
+    width: 90px; 
+
+  }
+  .result-parafiscales .gomezV img{
+    margin-right: 1rem;
+    width: 90px;
+  }
+  .result-parafiscales .gomezV{
+    display: flex;
+    justify-content: flex-end;
+   
+  }
   .result-content p {
     margin: 8px 0;
     color: #555;
@@ -293,68 +213,16 @@ body{
     justify-content: space-between;
   }
 
-  .result-ibc span{
-    display: flex;
-    padding-top: 10px;
-    margin-top: 10px;
-    justify-content: center;
-
-    
-  }
-  .result-ibc{
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
-    align-items: center;
-    border: 2px solid red;
-    
-  }
-  .result-ibc p{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
   .title{
     border-bottom: 1px solid #889AA4;
     display: flex;
     justify-content: space-around;
 
   }
-  .title h3{
-    border: none;
-    margin: 0;
-    
-  }
   .result{
     display: flex;
     justify-content: space-around;
   }
-  .result .p1 {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-  }
-  .result1{
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .result1 p{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-  
-
- .result p {
-   display: flex;
-    align-items: center;
-    justify-content: center;
-  text-align: center;
- }
- /* .result-proyecciones{
-  text-align: center;
- } */
 
   .children{
     /* border: 2px solid red; */
@@ -367,40 +235,48 @@ body{
     align-items: center;
     
   }
-  .box{
-   border-top:1px solid #889AA4;
-   /* border: 2px solid red; */
-
-  }
-
-  .box-result{
+  .result-data{
     display: flex;
-    justify-content: space-around;
     width: 100%;
+    justify-content: space-around;
+
   }
-  
-    
+  .result-data .items-data {
+
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+
   /* Estilos responsivos */
   @media (max-width: 768px) {
 
-    .calculator-card{
-      padding: 20px 15px;
+    .box-parafiscales{
+      justify-content: space-around;
+      flex-direction: column;
+      border: none;
     }
-   
-    .nomina button{
-      transform: translateX(-82%);
-      padding: 7px 0 7px 0;
-      width: 60%;
-    }
-    
+    .item-ibc p:nth-child(3){
+      margin: 20px 0 20px 0;
+  }
+  .resultados{
+    gap: 2px;
+
+  }
+
   }
   @media (max-width: 480px){
     .results-grid{
       grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
     }
+    .resultados{
+      gap: 0;
+    }
 
+    .item-ibc p:nth-child(3){
+      margin: 16px 0 16px 0;
   }
-  
+}
   /* Animaciones */
   @keyframes fadeIn {
     from {
@@ -414,8 +290,5 @@ body{
   }
   
   .results-container {
-    animation: fadeIn 0.3s ease-out;
-  }
-  .calculator-card{
     animation: fadeIn 0.3s ease-out;
   }

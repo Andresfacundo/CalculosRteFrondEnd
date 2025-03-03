@@ -2,9 +2,11 @@ import React from "react";
 import { useState } from "react";
 import gomez from "../../../assets/Group 17.png";
 import "../../../components/SalaryCalculator.css";
+import "./Formulario.css"
 import Calculadora from "../../../assets/calculator-line.png";
 import { calcularNomina } from "../../../services/services.js";
 import Navbar from "../../UI/Navbar/Navbar.jsx";
+import "../../UI/Navbar/Navbar.css"
 import ok from"../../../assets/ok.png"
 const Formulario = () => {
   const [formData, setFormData] = useState({
