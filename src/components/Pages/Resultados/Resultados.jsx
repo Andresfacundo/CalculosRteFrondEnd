@@ -91,42 +91,61 @@ const Resultados = () => {
 
               <div className="result-card">
                 <h2>Proyecciones</h2>
-                <div className="title">
-                  <h3>Empleador</h3>
-                  <h3>Trabajador</h3>
-                </div>
+                <div className="content-proyecctions">
+                  <div className="title">
+                    <h3>Empleador</h3>
+                    <h3>Trabajador</h3>
+                  </div>
                 <div className="result">
-                  <div className="children">
-                    <p>Provisiones</p>
-                    <p>Aportes</p>
-                    <p>Pago neto</p>
-                    <p>Total a pagar</p>
-                    <p>Costo total</p>
-
+                  <div className="employer-proyecctions">
+                    <div className="box-employer">
+                      <p>Provisiones</p>
+                      <Parrafos results={result}content1="proyecciones" content2="provisionesPrestacionesSociales" />
+                    </div>
+                    <div className="box-employer">
+                      <p>Aportes</p>
+                      <Parrafos results={result}content1="proyecciones" content2="aportesEmpleador" />
+                    </div>
+                    <div className="box-employer">
+                      <p>Pago neto</p>
+                      <Parrafos results={result}content1="proyecciones" content2="pagoNetoTrabajador" />
+                    </div>
+                    <div className="box-employer">
+                      <p>Total a pagar</p>
+                      <Parrafos results={result}content1="proyecciones" content2="totalPagar" />
+                    </div>
+                    <div className="box-employer">
+                      <p>Costo total</p>
+                      <Parrafos results={result}content1="proyecciones" content2="costoTotalEmpleador" />
+                    </div>
                   </div>
-                  <div className="children2">
-                    <Parrafos results={result}content1="proyecciones" content2="provisionesPrestacionesSociales" />
-                    <Parrafos results={result}content1="proyecciones" content2="aportesEmpleador" />
-                    <Parrafos results={result}content1="proyecciones" content2="pagoNetoTrabajador" />
-                    <Parrafos results={result}content1="proyecciones" content2="totalPagar" />
-                    <Parrafos results={result}content1="proyecciones" content2="costoTotalEmpleador" />
-
+                  <div className="title2">
+                    <h3>Trabajador</h3>
                   </div>
-                  <div className="children">
-                    <p>Total Ingresos</p>
-                    <p>Aportes</p>
-                    <p>ReteFuente</p>
-                    <p>Deducciones</p>
-                    <p>Pago Neto</p>
-                  </div>
-                <div className="children2">
-                    <Parrafos results={result}content1="calculations" content2="totalIngresos" />
-                    <Parrafos results={result}content1="proyecciones" content2="aportesTrabajador" />
-                    <Parrafos results={result} />
-                    <Parrafos results={result}content1="proyecciones" content2="deducciones" />
-                    <Parrafos results={result}content1="proyecciones" content2="pagoNetoTrabajador" />
-                  </div>
+                  <div className="employee-proyecctions">
+                    <div className="box-employee">
+                      <p>Total Ingresos</p>
+                      <Parrafos results={result}content1="calculations" content2="totalIngresos" />
+                    </div>
+                    <div className="box-employee">
+                      <p>Aportes</p>
+                      <Parrafos results={result}content1="proyecciones" content2="aportesTrabajador" />
+                    </div>
+                    <div className="box-employee">
+                      <p>ReteFuente</p>
+                      <Parrafos results={result} />
+                    </div>
+                    <div className="box-employee">
+                      <p>Deducciones</p>
+                      <Parrafos results={result}content1="proyecciones" content2="deducciones" />
+                    </div>
+                    <div className="box-employee">
+                      <p>Pago Neto</p>
+                      <Parrafos results={result}content1="proyecciones" content2="pagoNetoTrabajador" />
+                    </div>
+                  </div>            
                 </div>
+              </div>
                 <div className="gomezV">
                     <img src={gomez} alt="icono" />
                 </div>
@@ -141,20 +160,20 @@ const Resultados = () => {
                     <Parrafos content="IBC ="results={result}content1="seguridadSocial"content2="ibc"/>
                   </div>
                   <div className="box-ibc">
-                    <div className="item-ibc">
-                      <p>Salario</p>
-                      <span className="operator">+</span>
-                      <p>Otros Pagos Salariales</p>
-                      <span className="operator">+</span>
-                      <p>Excedente</p>
-                    </div>
-                    <div className="resultados">
-                      <Parrafos results={result}content1="calculations" content2="salario"/>
-                      <span>+</span>
-                      <Parrafos results={result} content1="calculations" content2="otrosPagosSalariales"/>
-                      <span>+</span>
-                      <Parrafos results={result} content1="seguridadSocial" content2="excedente" />
-                    </div>
+                      <div className="salary">
+                        <p>Salario</p>
+                        <Parrafos results={result}content1="calculations" content2="salario"/>
+                      </div>
+                      <span className="operator">+ <span >+</span></span>
+                      <div className="salary">
+                        <p>Otros <br /> Pagos <br /> Salariales</p>
+                        <Parrafos results={result} content1="calculations" content2="otrosPagosSalariales"/>
+                      </div>
+                      <span className="operator" >+ <span >+</span></span>
+                      <div className="salary">
+                        <p>Excedente</p>
+                        <Parrafos results={result} content1="seguridadSocial" content2="excedente" />
+                      </div>
                   </div>
                 </div>
               <div className="box-concepto">

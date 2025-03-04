@@ -96,7 +96,6 @@ body{
       transform: translateX(0);
     }
 
-
    }
 
   .result-parafiscales{
@@ -129,66 +128,40 @@ body{
     
   }
 
-  .operador-plus {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    margin: 0 5px;
-  }
-
-
-  .content-ibc{
-    display: flex;
-    justify-content: center;
-    /* border: 2px solid red; */
-
-    width: 100%;
-    border-bottom: 1px solid #889AA4;
-    /* border-right: 1px solid #889AA4 ; */
-  }
-  .box-ibc{
-    display: flex;
-    justify-content: space-around;
-    /* border-right: 1px solid #889AA4; */
-    width: 100%;
-  }
-  .item-ibc{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-  }
-  .item-ibc p:nth-child(3){
-    margin: 7px 0 12px 0;
-  }
-  .item-ibc span:nth-child(2){
-    margin-top: 3px;
-    width: 100%;
-  }
-  
-  .result-ibc .operator {
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-  }
   .result-ibc{
-    display: flex;
-    flex-direction: column;
     align-items: center;
     font-weight: 600;
+    width: 50%;
     
   }
-  .resultados{
+  .content-ibc{
+    border-bottom: 1px solid #889AA4;
+    height: 2.5rem;
+    text-align: center;
+  }
+  .box-ibc {
     align-items: center;
     display: flex;
     flex-direction: column;
+
+  }
+  .box-ibc .operator{
     align-items: center;
     text-align: center;
-    gap: 4px;
-  
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
   }
-
+  .box-ibc .salary{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+  .box-ibc .salary p{
+    width: 100%;
+  }
   .result-card .gomezV{
     display: flex;
     flex-direction: column;
@@ -209,51 +182,71 @@ body{
   .result-parafiscales .gomezV{
     display: flex;
     justify-content: flex-end;
-   
   }
-  .result-content p {
-    margin: 8px 0;
-    color: #555;
-    display: flex;
-    justify-content: space-between;
-  }
-
   .title{
     border-bottom: 1px solid #889AA4;
     display: flex;
     justify-content: space-around;
 
   }
+  .title2{
+    display: none;
+  }
   .result{
     display: flex;
     justify-content: space-around;
   }
 
-  .children{
-    /* border: 2px solid red; */
-    display: flex;
-    flex-direction: column;
-  }
-  .children2{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-  }
-  .result-data{
-    display: flex;
+  .employer-proyecctions {
     width: 100%;
-    justify-content: space-around;
+  }
+  .box-employer p{
+    width: 100%;
+  }
+  .employer-proyecctions .box-employer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  }
+  .employee-proyecctions{
+    width: 100%;
+  }
+  .box-employee p{
+    width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+  .box-employee p span{
+    width: 100%;
 
   }
-  .result-data .items-data {
-
-    gap: 1rem;
+  .employee-proyecctions .box-employee{
     display: flex;
-    flex-direction: column;
+    justify-content: space-around;
+    align-items: center; 
+    text-align: center;
   }
 
   /* Estilos responsivos */
+  @media (max-width: 920px){
+    .title h3:nth-child(2){
+      display: none;
+    }
+    .title2{
+      width: 100%;
+      display: block;
+      text-align: center;
+      border-top: 1px solid #889AA4;
+      border-bottom: 1px solid #889AA4;
+
+    }
+    .content-proyecctions .result{
+      display: flex;
+      flex-wrap: wrap;
+
+    }
+  }
   @media (max-width: 768px) {
 
     .box-parafiscales{
@@ -261,21 +254,16 @@ body{
       flex-direction: column;
       border: none;
     }
-    .item-ibc p:nth-child(3){
-      margin: 20px 0 20px 0;
+ 
+  .result-ibc{
+    width: 100%;
   }
-  .resultados{
-    gap: 2px;
-
-  }
+  
 
   }
   @media (max-width: 480px){
     .results-grid{
       grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-    }
-    .resultados{
-      gap: 0;
     }
 
     .item-ibc p:nth-child(3){
