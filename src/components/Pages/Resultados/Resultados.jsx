@@ -60,7 +60,7 @@ const Resultados = () => {
                   <div className="delete-button">                    
                     <button onClick={() => handleDeleteResult(index)}><img src={deleteIcon}/></button>
                   </div>
-                  <button onClick={() => generatePDF(index)}>Descargar PDF</button>
+                  {/* <button onClick={() => generatePDF(index)}>Descargar PDF</button> */}
                 <h2>Resumen de Datos</h2>
                 <div className="result">
                   <div className="childre">
