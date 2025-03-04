@@ -5,9 +5,24 @@ import gomez from "../../../assets/Group 17.png";
 import NotAvaible from "../../UI/NotAvaible/NotAvaible";
 import deleteIcon from '../../../assets/delete.png'
 import ok from'../../../assets/ok.png'
-
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const Resultados = () => {
+  const generatePDF = (index) => {
+    const resultElement = document.getElementById(`result-${index}`);
+    if (!resultElement) return;
+  
+    html2canvas(resultElement, { scale: 2 }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("p", "mm", "a4");
+      const imgWidth = 210; // Ancho de la hoja A4 en mm
+      const imgHeight = (canvas.height * imgWidth) / canvas.width; // Escalar la imagen
+  
+      pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+      pdf.save(`resultado-${index + 1}.pdf`);
+    });
+  };
   const [results, setResults] = useState([]); //Estado que almacena los resultados
   const [showAlert,setShowAlert] = useState(false);
 
@@ -39,12 +54,13 @@ const Resultados = () => {
           )}
           {results.map((result, index) => (       
             <div key={index} >  
-            <h2>Resultado{results.length - index}</h2>
+            <h2>Resultado {results.length - index}</h2>
             <div className="results-grid">
               <div className="result-card">
-                  <div className="delete-button">
+                  <div className="delete-button">                    
                     <button onClick={() => handleDeleteResult(index)}><img src={deleteIcon}/></button>
                   </div>
+                  <button onClick={() => generatePDF(index)}>Descargar PDF</button>
                 <h2>Resumen de Datos</h2>
                 <div className="result">
                   <div className="childre">
@@ -137,7 +153,7 @@ const Resultados = () => {
                       <span>+</span>
                       <Parrafos results={result} content1="calculations" content2="otrosPagosSalariales"/>
                       <span>+</span>
-                      <Parrafos results={result} content1="calculations" content2="excedente" />
+                      <Parrafos results={result} content1="seguridadSocial" content2="excedente" />
                     </div>
                   </div>
                 </div>
