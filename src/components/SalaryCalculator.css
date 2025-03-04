@@ -183,11 +183,16 @@ body{
     display: flex;
     justify-content: flex-end;
   }
-  .title{
+  .content-proyecctions .title{
     border-bottom: 1px solid #889AA4;
     display: flex;
     justify-content: space-around;
 
+  }
+  .box-parafiscales .title{
+    border-bottom: 1px solid #889AA4;
+    display: flex;
+    justify-content: space-around;
   }
   .title2{
     display: none;
@@ -230,7 +235,7 @@ body{
 
   /* Estilos responsivos */
   @media (max-width: 920px){
-    .title h3:nth-child(2){
+    .content-proyecctions .title h3:nth-child(2){
       display: none;
     }
     .title2{
@@ -257,6 +262,9 @@ body{
  
   .result-ibc{
     width: 100%;
+  }
+  .box-parafiscales .title{
+    border-top: 1px solid #889AA4;
   }
   
 
