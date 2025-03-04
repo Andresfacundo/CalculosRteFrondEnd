@@ -80,7 +80,7 @@ const Formulario = () => {
               >
                 <option value="Ordinario">Ordinario</option>
                 <option value="Integral">Integral</option>
-                <option value="Medio tiempo">Medio Tiempo</option>
+                {/* <option value="Medio tiempo">Medio Tiempo</option> */}
               </select>
             </div>
 
