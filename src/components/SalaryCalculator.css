@@ -191,9 +191,12 @@ body{
 
   .result-card .gomezV{
     display: flex;
+    flex-direction: column;
     justify-content: end;
+    align-self: flex-end;
+    height: 100%;
   }
-  
+ 
   .result-card .gomezV img{
     margin-right: 1rem;
     width: 90px; 
