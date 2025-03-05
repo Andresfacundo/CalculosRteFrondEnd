@@ -57,7 +57,7 @@ body{
     justify-content: flex-end;
     position: relative;
   }
-  .result-card button{
+  .result-card .selector{
     border: none;
     background-color: transparent;
     position: absolute;
@@ -161,6 +161,39 @@ body{
   }
   .box-ibc .salary p{
     width: 100%;
+  }
+  .contentImg img{
+    margin-right: 1rem;
+    width: 90px; 
+    align-self: self-end;
+
+  }
+  .contentImg button{
+    background-color: #DFBD7C;
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    align-self: self-end;
+
+  }
+  .contentImg button img{
+    width: 25px;
+    padding: 0;
+    margin-right:10px;
+
+  }
+  .contentImg {
+
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+
   }
   .result-card .gomezV{
     display: flex;

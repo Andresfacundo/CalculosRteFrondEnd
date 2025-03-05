@@ -5,26 +5,16 @@ import gomez from "../../../assets/Group 17.png";
 import NotAvaible from "../../UI/NotAvaible/NotAvaible";
 import deleteIcon from '../../../assets/delete.png'
 import ok from'../../../assets/ok.png'
-import jsPDF from "jspdf";
-import html2canvas from "html2canvas";
+import "../../../utils/GeneratePdf.css"
+import generatePDF from "../../../utils/GeneratePdf";
+import donwload from '../../../assets/Download.png';
 
 const Resultados = () => {
-  const generatePDF = (index) => {
-    const resultElement = document.getElementById(`result-${index}`);
-    if (!resultElement) return;
-  
-    html2canvas(resultElement, { scale: 2 }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("p", "mm", "a4");
-      const imgWidth = 210; // Ancho de la hoja A4 en mm
-      const imgHeight = (canvas.height * imgWidth) / canvas.width; // Escalar la imagen
-  
-      pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-      pdf.save(`resultado-${index + 1}.pdf`);
-    });
-  };
+
   const [results, setResults] = useState([]); //Estado que almacena los resultados
   const [showAlert,setShowAlert] = useState(false);
+  const [showPDFModal, setShowPDFModal] = useState(false);
+  const [selectedResults, setSelectedResults] = useState([]);
 
   useEffect(() => {
     const storedResults = localStorage.getItem("Resultados");
@@ -40,27 +30,96 @@ const Resultados = () => {
     setShowAlert(true);
     setTimeout(() => setShowAlert(false),4000);
   }
+  
+
+  const openPDFModal = () => {
+    setSelectedResults([]);
+    setShowPDFModal(true);
+  }
+
+  const handleResultSelection = (result) => {
+    const isSelected = selectedResults.includes(result);
+    if (isSelected) {
+      // Deselect if already selected
+      setSelectedResults(selectedResults.filter(r => r !== result));
+    } else {
+      // Select or add to selection
+      setSelectedResults([...selectedResults, result]);
+    }
+  }
+  const generateSelectedPDFs = () => {
+    if (selectedResults.length === 0) {
+      alert("Selecciona al menos un resultado para generar PDF");
+      return;
+    }
+
+    // Generate PDF for each selected result
+    selectedResults.forEach(result => {
+      generatePDF(result);
+    });
+
+    // Close the modal
+    setShowPDFModal(false);
+  }
   return (
     <>
       {results.length > 0 ? (
         <div className="results-container">
           <div className="container-button">
             <Navbar />
+            {showPDFModal && (
+              <div className="pdf-selection-modal">
+              <div className="modal-content">
+                <h2>Seleccionar Resultados para PDF</h2>
+                {results.map((result, index) => (
+                  <div 
+                  key={index} 
+                  className={`result-selection-item ${
+                    selectedResults.includes(result) ? 'selected' : ''
+                  }`}
+                  onClick={() => handleResultSelection(result)}
+                  >
+                    <input 
+                      type="checkbox" 
+                      checked={selectedResults.includes(result)}
+                      readOnly
+                    />
+                    <span>Resultado {results.length - index}</span>
+                  </div>
+                ))}
+                <div className="modal-actions">
+                  <button 
+                    onClick={() => setShowPDFModal(false)}
+                    className="cancel-button"
+                  >
+                    Cancelar
+                  </button>
+                  <button 
+                    onClick={generateSelectedPDFs}
+                    className="generate-button"
+                  >
+                    Generar PDF
+                  </button>
+                </div>
+              </div>
+            </div>
+          )}
+          
           </div>
           {showAlert && (
             <div className='alert'>
              <img src={ok} alt="icono" /> ¡Borrado con Exito!
             </div>
           )}
-          {results.map((result, index) => (       
-            <div key={index} >  
+          {results.map((result, index) => (  
+            <div key={index} id={`result-${index}`}>
             <h2>Resultado {results.length - index}</h2>
             <div className="results-grid">
               <div className="result-card">
                   <div className="delete-button">                    
-                    <button onClick={() => handleDeleteResult(index)}><img src={deleteIcon}/></button>
+                    <button onClick={() => handleDeleteResult(index)} className="selector"><img src={deleteIcon}/></button>
+              
                   </div>
-                  {/* <button onClick={() => generatePDF(index)}>Descargar PDF</button> */}
                 <h2>Resumen de Datos</h2>
                 <div className="result">
                   <div className="childre">
@@ -84,8 +143,9 @@ const Resultados = () => {
                   <Parrafos  results={result} content1="calculations" content2="exonerado"/>
                   </div>
                 </div>
-                <div className="gomezV">
-                    <img src={gomez} alt="icono" />
+                <div className="contentImg">
+                  <button onClick={openPDFModal}className="generate-pdf-selector-button" ><img src={donwload}  />Generar PDF</button>
+                  <img src={gomez} alt="icono" />
                 </div>
               </div>
 
