@@ -64,23 +64,37 @@ const Resultados = () => {
   };
 
   const generatePDF = async (result) => {
-    const input = document.getElementById(`result-${results.indexOf(result)}`);
+    const index = results.indexOf(result);
+    if (index === -1) return; // Evita errores si el resultado no se encuentra
+  
+    const input = document.getElementById(`result-${index}`);
+    if (!input) return; // Evita errores si el elemento no existe
+  
     const button = input.querySelector('.generate-pdf-selector-button');
-    button.style.display = 'none'; 
-
+    if (button) button.style.display = 'none';
+  
     input.classList.add('pdf-colors');
-    const canvas = await html2canvas(input, { scale: 2 });
-    const imgData = canvas.toDataURL('image/png');
-    const pdf = new jsPDF('p', 'mm', 'a4');
-    const imgProps = pdf.getImageProperties(imgData);
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-    pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save(`resultado-${results.indexOf(result) + 1}.pdf`);
-
-    input.classList.remove('pdf-colors'); 
-    button.style.display = 'flex'; 
+  
+    try {
+      const canvas = await html2canvas(input, { scale: 2 });
+      const imgData = canvas.toDataURL('image/png');      
+      const pdf = new jsPDF('p', 'mm', 'a4');
+  
+      // Ajustar tamaño de imagen al PDF
+      const imgProps = pdf.getImageProperties(imgData);
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+  
+      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
+      pdf.save(`Resultado-${results.length - index}.pdf`);
+    } catch (error) {
+      console.error('Error generando el PDF:', error);
+    } finally {
+      input.classList.remove('pdf-colors');
+      if (button) button.style.display = 'flex';
+    }
   };
+  
 
   return (
     <>
