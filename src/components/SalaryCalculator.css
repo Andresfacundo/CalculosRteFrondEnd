@@ -162,18 +162,11 @@ body{
   .box-ibc .salary p{
     width: 100%;
   }
-  .contentImg img{
-    margin-right: 1rem;
-    width: 90px; 
-    align-self: self-end;
-
-  }
   .contentImg button{
     background-color: #DFBD7C;
     border: none;
     padding: 7px;
     border-radius: 5px;
-    margin-left: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -188,10 +181,11 @@ body{
 
   }
   .contentImg {
-
+    padding: 10px 0 10px 0;
     text-align: center;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    /* justify-content: center; */
     height: 100%;
 
   }
