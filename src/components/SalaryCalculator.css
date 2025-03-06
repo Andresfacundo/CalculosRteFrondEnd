@@ -7,6 +7,16 @@ body{
 }
 
   /* Estilos de los resultados */
+  .pdf-colors {
+    background-color: #eae9ecb2; /* Fondo deseado */
+    color: #333; /* Texto oscuro */
+  }
+  
+  .pdf-colors .result-card .result-parafiscales  {
+    background-color: #fff; 
+    color: #333; 
+  }
+
   .results-container {
     font-family: "Jost", serif ;
     font-optical-sizing: auto;

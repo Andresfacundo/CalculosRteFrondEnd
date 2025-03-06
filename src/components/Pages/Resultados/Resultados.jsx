@@ -65,6 +65,10 @@ const Resultados = () => {
 
   const generatePDF = async (result) => {
     const input = document.getElementById(`result-${results.indexOf(result)}`);
+    const button = input.querySelector('.generate-pdf-selector-button');
+    button.style.display = 'none'; 
+
+    input.classList.add('pdf-colors');
     const canvas = await html2canvas(input, { scale: 2 });
     const imgData = canvas.toDataURL('image/png');
     const pdf = new jsPDF('p', 'mm', 'a4');
@@ -73,6 +77,9 @@ const Resultados = () => {
     const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
     pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
     pdf.save(`resultado-${results.indexOf(result) + 1}.pdf`);
+
+    input.classList.remove('pdf-colors'); 
+    button.style.display = 'flex'; 
   };
 
   return (
@@ -126,7 +133,6 @@ const Resultados = () => {
           )}
           {results.map((result, index) => (  
             <div key={index} id={`result-${index}`}>
-
               <h2>Resultado {results.length - index}</h2>
               <div className="contentImg">
                 <button onClick={openPDFModal} className="generate-pdf-selector-button"><img src={donwload} />Generar PDF</button>
