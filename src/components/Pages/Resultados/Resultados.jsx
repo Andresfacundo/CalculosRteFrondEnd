@@ -63,30 +63,39 @@ const Resultados = () => {
     setShowPDFModal(false);
   };
 
+  
   const generatePDF = async (result) => {
     const index = results.indexOf(result);
     if (index === -1) return; // Evita errores si el resultado no se encuentra
-  
+    
     const input = document.getElementById(`result-${index}`);
     if (!input) return; // Evita errores si el elemento no existe
-  
+    
     const button = input.querySelector('.generate-pdf-selector-button');
     if (button) button.style.display = 'none';
-  
+    
     input.classList.add('pdf-colors');
-  
+    
     try {
-      const canvas = await html2canvas(input, { scale: 2 });
+      const canvas = await html2canvas(input, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: false,
+        logging: true,
+        backgroundColor: null,
+        windowWidth: input.scrollWidth,
+        windowHeight: input.scrollHeight
+      });
       const imgData = canvas.toDataURL('image/png');      
-      const pdf = new jsPDF('p', 'mm', 'a4');
-  
+      const pdf = new jsPDF('p', 'mm', [210, canvas.height * 210 / canvas.width]); // Ajusta el tamaño del PDF
+      
       // Ajustar tamaño de imagen al PDF
       const imgProps = pdf.getImageProperties(imgData);
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-  
+      
       pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save(`Resultado-${results.length - index}.pdf`);
+      pdf.save(`Resultado-${index + 1}.pdf`);
     } catch (error) {
       console.error('Error generando el PDF:', error);
     } finally {
