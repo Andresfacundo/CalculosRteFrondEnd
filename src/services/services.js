@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://calculosconrte.onrender.com/api";
+const API_URL = "https://calculosconrte.onrender.com/api/calcular";
 
 
 export const calcularNomina = async (formData) => {
