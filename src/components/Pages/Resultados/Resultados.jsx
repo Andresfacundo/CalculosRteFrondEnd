@@ -173,6 +173,7 @@ const Resultados = () => {
                       <p>Deducciones</p>
                       <p>Pensionado</p>
                       <p>Exonerado</p>
+                      <p>Clase de riesgo</p>
                     </div>
                     <div className="">
                       <Parrafos  results={result} content1="calculations" content2="tipoSalario"/>
@@ -183,6 +184,7 @@ const Resultados = () => {
                       <Parrafos  results={result} content1="calculations" content2="deducciones"/>
                       <Parrafos  results={result} content1="calculations" content2="pensionado"/>
                       <Parrafos  results={result} content1="calculations" content2="exonerado"/>
+                      <Parrafos  results={result} content1="calculations" content2="claseRiesgo"/>
                     </div>
                   </div>
                   <div className="gomezV">
