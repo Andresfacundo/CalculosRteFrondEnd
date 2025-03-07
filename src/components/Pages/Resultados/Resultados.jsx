@@ -83,9 +83,9 @@ const Resultados = () => {
         windowWidth: input.scrollWidth,
         windowHeight: input.scrollHeight
       });
-      const imgData = canvas.toDataURL('image/png');      
-      const pdf = new jsPDF('p', 'mm', [210, canvas.height * 210 / canvas.width]); // Ajusta el tamaño del PDF
-      
+      const imgData = canvas.toDataURL('image/png');   
+      const orientation  = window.innerWidth > window.innerHeight ? 'l' : 'p';   
+      const pdf = new jsPDF(orientation, 'mm', [210, canvas.height * 210 / canvas.width]); // Ajusta el tamaño del PDF
       // Ajustar tamaño de imagen al PDF
       const imgProps = pdf.getImageProperties(imgData);
       const pdfWidth = pdf.internal.pageSize.getWidth();
