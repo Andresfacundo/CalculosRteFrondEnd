@@ -18,7 +18,7 @@ const Formulario = () => {
     auxilioAlimentacion: "",
     pensionado: "No",
     exonerado: "Si",
-    claseRiesgo: "I",
+    claseRiesgo: "1",
   });
   const[showAlert, setShowAlert] = useState(false);
 
@@ -169,11 +169,11 @@ const Formulario = () => {
                 value={formData.claseRiesgo}
                 onChange={handleInputChange}
               >
-                <option value="I">1</option>
-                <option value="II">2</option>
-                <option value="III">3</option>
-                <option value="IV">4</option>
-                <option value="V">5</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
               </select>
             </div>
           </div>
