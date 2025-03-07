@@ -70,10 +70,7 @@ const Resultados = () => {
     
     const input = document.getElementById(`result-${index}`);
     if (!input) return; // Evita errores si el elemento no existe
-    
-    const button = input.querySelector('.generate-pdf-selector-button');
-    if (button) button.style.display = 'none';
-    
+        
     input.classList.add('pdf-colors');
     
     try {
@@ -100,7 +97,7 @@ const Resultados = () => {
       console.error('Error generando el PDF:', error);
     } finally {
       input.classList.remove('pdf-colors');
-      if (button) button.style.display = 'flex';
+
     }
   };
   
@@ -157,12 +154,12 @@ const Resultados = () => {
           {results.map((result, index) => (  
             <div key={index} id={`result-${index}`}>
               <h2>Resultado {results.length - index}</h2>
-              <div className="contentImg">
+              <div className="contentImg" data-html2canvas-ignore="true">
                 <button onClick={openPDFModal} className="generate-pdf-selector-button"><img src={donwload} />Generar PDF</button>
               </div>
               <div className="results-grid">
                 <div className="result-card">
-                  <div className="delete-button">                    
+                  <div className="delete-button" data-html2canvas-ignore="true">                    
                     <button onClick={() => handleDeleteResult(index)} className="selector"><img src={deleteIcon}/></button>
                   </div>
                   <h2>Resumen de Datos</h2>
