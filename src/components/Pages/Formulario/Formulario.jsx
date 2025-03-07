@@ -18,6 +18,7 @@ const Formulario = () => {
     auxilioAlimentacion: "",
     pensionado: "No",
     exonerado: "Si",
+    claseRiesgo: "I",
   });
   const[showAlert, setShowAlert] = useState(false);
 
@@ -158,6 +159,21 @@ const Formulario = () => {
               >
                 <option value="No">No</option>
                 <option value="Si">Sí</option>
+              </select>
+            </div>
+            <div className="form-group">
+              <label>Clase de riesgo</label>
+              <select
+                id="claseRiesgo"
+                name="claseRiesgo"
+                value={formData.claseRiesgo}
+                onChange={handleInputChange}
+              >
+                <option value="I">1</option>
+                <option value="II">2</option>
+                <option value="III">3</option>
+                <option value="IV">4</option>
+                <option value="V">5</option>
               </select>
             </div>
           </div>
