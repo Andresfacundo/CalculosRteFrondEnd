@@ -5,7 +5,10 @@
     gap: 2rem;
     display: flex;
     flex-direction: column;
-    border: 2px solid red;
+
+}
+.box-navbar h1{
+    text-align: center;
 }
 
 .box-navbar h1,h2,h3{
@@ -18,29 +21,82 @@
     display: flex;
     justify-content: space-around;
 }
+.content-card{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    gap: 1rem;
+    /* border: 2px solid red; */
+}
 .content-compare{
-    padding: 2rem 2rem 5rem 2rem;
+    padding: 2rem 2rem 0 2rem;
+    /* border: 2px solid red;   */
     background-color: #fff;
     border-radius: 8px;
-    width: 50%;
+    width: 45%;
     box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
 }
 
 .box-input{
     width: 100%;
-    /* box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5); */
     background-color: #eae9ecb2;
 }
+.result-proyecction{
+    color: #333;
+    padding: 40px 11px 11px 11px;
+    display: flex;
+    flex-direction: column;
+}
+.result-proyecction h2{
+    border-bottom: 1px solid #889AA4;
+}
+.result-proyecction .gomezV{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-self: flex-end;
+    height: 100%;
+}
+
+.result-proyecction .gomezV img{
+    margin-right: 1rem;
+    width: 90px; 
+
+  }
+.content-graphic{                
+    border-radius: 8px;
+    padding: 2rem 2rem 5rem 2rem;
+    background-color: #fff;
+    box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
+    width: 50%;
+
+    /* height: 100%; */
+
+}
 .content-graphic .box-diferent{
-    border: 2px solid red;
     display: flex;
     justify-content: space-around;
+    /* justify-content: center; */
+    width: 100%;
+
+
 }
-.content-graphic .box-diferent span{
-    border: 2px solid red;
-    display: flex;
+.box-diferent .card-graphic{
+    width: 40%;
+    border-radius: 8px;
+    background-color: #eae9ecb2;
     align-items: center;
     text-align: center;
+}
+.box-diferent .card-graphic2{
+    border-radius: 8px;
+    background-color: #dfbc7c57;
+    width: 40%;
+    align-items: center;
+    text-align: center;
+}
+.content-graphic .box-diferent span{
+    display: flex;
     justify-content: center;
 
 }
@@ -56,5 +112,7 @@
     padding: 20px;
     box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
 }
+
+
 
 
