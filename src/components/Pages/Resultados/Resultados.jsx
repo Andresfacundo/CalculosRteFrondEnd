@@ -298,7 +298,7 @@ const Resultados = () => {
                         <div>
                           <Parrafos  results={result} content1="seguridadSocial" content2="saludEmpleador"/>
                           <Parrafos  results={result} content1="seguridadSocial" content2="pensionEmpleador"/>
-                          <Parrafos  results={result} content1="seguridadSocial" content2="FSP"/>
+                          <Parrafos  results={result} />
                           <Parrafos  results={result} content1="seguridadSocial" content2="riesgosLaborales"/>
                           <Parrafos  results={result} content1="seguridadSocial" content2="cajaCompensacion"/>
                           <Parrafos  results={result} content1="seguridadSocial" content2="sena"/>
@@ -308,7 +308,7 @@ const Resultados = () => {
                         <div>
                           <Parrafos  results={result} content1="seguridadSocial" content2="saludTrabajador"/>
                           <Parrafos  results={result} content1="seguridadSocial" content2="pensionTrabajador"/>
-                          <Parrafos  results={result} />
+                          <Parrafos  results={result} content1="seguridadSocial" content2="FSP"/>
                           <Parrafos  results={result} />
                           <Parrafos  results={result} />
                           <Parrafos  results={result} />

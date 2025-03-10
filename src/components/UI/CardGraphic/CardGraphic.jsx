@@ -1,4 +1,6 @@
 import React from 'react'
+import formatCurrency from '../../../utils/formatUtils'
+
 
 const CardGraphic = ({content,content2,content3,style}) => {
   return (
