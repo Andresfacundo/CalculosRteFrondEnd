@@ -5,6 +5,7 @@
     gap: 2rem;
     display: flex;
     flex-direction: column;
+    width: 100%;
 
 }
 .box-navbar h1{
@@ -23,17 +24,16 @@
 }
 .content-card{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     width: 100%;
     gap: 1rem;
-    /* border: 2px solid red; */
+
 }
 .content-compare{
     padding: 2rem 2rem 0 2rem;
-    /* border: 2px solid red;   */
     background-color: #fff;
     border-radius: 8px;
-    width: 45%;
+    width: 100%;
     box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
 }
 
@@ -49,8 +49,10 @@
 }
 .result-proyecction h2{
     border-bottom: 1px solid #889AA4;
+    border-top: 1px solid #889AA4;
+    padding-top: 1rem;
 }
-.result-proyecction .gomezV{
+.result-proyecction .gomezV {
     display: flex;
     flex-direction: column;
     justify-content: end;
@@ -61,22 +63,33 @@
 .result-proyecction .gomezV img{
     margin-right: 1rem;
     width: 90px; 
+}
 
-  }
 .content-graphic{                
     border-radius: 8px;
-    padding: 2rem 2rem 5rem 2rem;
+    padding: 2rem 2rem .7rem 2rem;
     background-color: #fff;
     box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
-    width: 50%;
-
-    /* height: 100%; */
-
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 }
+.content-graphic .gomezV{
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-self: flex-end;
+    height: 100%;
+}
+.content-graphic .gomezV img{
+    width: 90px;
+    margin-right: 1rem;
+}
+
+
 .content-graphic .box-diferent{
     display: flex;
     justify-content: space-around;
-    /* justify-content: center; */
     width: 100%;
 
 

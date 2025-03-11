@@ -1,0 +1,22 @@
+.content-tittle{
+    display: flex;
+    justify-content: space-around;
+    /* border: 2px solid blue; */
+    border-bottom:2px solid #889AA4;
+}
+
+.content-tittle h3{
+    text-align: center;
+    width: 100%;
+
+}
+.content-difference{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-around;
+}
+.content-difference ,.concept ,.content-actual, .content-proyectado ,.diferencia{
+    /* border: 2px solid yellow; */
+    width: 100%;
+    text-align: center;
+}

@@ -3,6 +3,7 @@ import Boton from "../Boton/Boton.jsx";
 import Calculadora from "../../../assets/calculator-line.png";
 import Comparar from "../../../assets/arrow-left-right-line.png";
 import Resultado from "../../../assets/Chart Vertical.png";
+import "./Navbar.css";
 
 const Navbar = () => {
   return (
@@ -21,13 +22,13 @@ const Navbar = () => {
         content="Resultados"
         route="/Resultados"
       />
-      {/* <Boton 
+      <Boton 
         route="/Comparar"
-        styleB="boxButton"
+        styleB="boxButton testing"
         className="boton"
         img={Comparar}
         content="Comparar"
-      /> */}
+      />
     </>
   );
 };

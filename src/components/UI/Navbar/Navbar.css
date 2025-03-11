@@ -22,3 +22,8 @@
 .boton img {
     width: 25px;
 }
+@media (max-width: 968px) {
+    .boxButton:nth-child(3){
+        display: none;}
+
+}
