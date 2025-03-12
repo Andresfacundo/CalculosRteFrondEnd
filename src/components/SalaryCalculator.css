@@ -197,7 +197,12 @@ body{
     display: flex;
     /* justify-content: center; */
     height: 100%;
+    position: relative;
 
+  }
+  .contentImg .generate-pdf-selector-button{
+    position: absolute;
+    top: 16px;
   }
   .result-card .gomezV{
     display: flex;

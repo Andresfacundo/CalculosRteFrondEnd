@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../../UI/Navbar/Navbar";
 import "./Comparar.css";
-import Parrafos from "../../UI/Parrafos/Parrafos";
-import formatCurrency from "../../../utils/formatUtils";
-import ComparativeGraph from "../../UI/ComparativeGrahp/ComparativeGrap";
 import gomez from "../../../assets/Group 17.png";
 import ResumenComparativo from "../../UI/Comparative/ResumenComparativo";
 import ResultDiference from "../../Layouts/ResultDifference/ResultDiference";
+import GeneratePDF from "../../../utils/GeneratePdf";
+import download from "../../../assets/Download.png"
 
 
 const Comparar = () => {
@@ -37,33 +36,18 @@ const Comparar = () => {
   };
 
 
-
-  const calcularVariacion = (content1, key) => {
-    if (selectedActual && selectProyections) {
-      const valorAnterior = selectProyections?.[content1]?.[key] || 0;
-      const valorActual = selectedActual?.[content1]?.[key] || 0;
-      // console.log(sele);
-
-
-      if (valorAnterior === 0) return "+0%"; // Evitar NaN%
-
-      const diferencia = (((valorActual - valorAnterior) / valorAnterior) * 100).toFixed(2);
-      // const variacion = ((diferencia / valorAnterior) * 100).toFixed(2);
-
-      return diferencia >= 0 ? `+${diferencia}%` : `${diferencia}%`;
-    }
-    return "+0%";
-  };
-
   return (
     <div className="box-navbar">
       <h1>Comparación</h1>
       <div className="content-navbar">
         <Navbar />
       </div>
-      <div className="content-card">
-        <div className="content-compare">
-          <div className="box-select-compare">
+      <div className="content-card" id="pdfContent">
+        <div className="content-compare" >
+          <div className="box-select-compare" data-html2canvas-ignore="true">
+            <div className="contentImg" data-html2canvas-ignore="true">
+              <button onClick={() => GeneratePDF("pdfContent", "comparacion")} className="generate-pdf-selector-button"><img src={download} />Generar PDF</button>
+            </div>
             <h3>Actual</h3>
             <select
               className="box-input"
@@ -77,7 +61,7 @@ const Comparar = () => {
               ))}
             </select> 
           </div>
-          <div className="box-select-compare">
+          <div className="box-select-compare" data-html2canvas-ignore="true">
             <h3>Proyectado</h3>
             <select
               className="box-input"
@@ -110,6 +94,7 @@ const Comparar = () => {
           
         </div>
       </div>
+      
     </div>
   );
 };

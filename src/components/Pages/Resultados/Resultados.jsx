@@ -7,8 +7,8 @@ import deleteIcon from '../../../assets/delete.png';
 import ok from'../../../assets/ok.png';
 import "../../../utils/GeneratePdf.css";
 import donwload from '../../../assets/Download.png';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
+import GeneratePDF from "../../../utils/GeneratePdf";
+
 
 const Resultados = () => {
   const [results, setResults] = useState([]); //Estado que almacena los resultados
@@ -56,50 +56,14 @@ const Resultados = () => {
 
     // Generate PDF for each selected result
     selectedResults.forEach(result => {
-      generatePDF(result);
+      const index = results.indexOf(result);
+      GeneratePDF(`result-${index}`, `Resultado-${results.length - index}`);
     });
 
     // Close the modal
     setShowPDFModal(false);
   };
 
-  
-  const generatePDF = async (result) => {
-    const index = results.indexOf(result);
-    if (index === -1) return; // Evita errores si el resultado no se encuentra
-    
-    const input = document.getElementById(`result-${index}`);
-    if (!input) return; // Evita errores si el elemento no existe
-        
-    input.classList.add('pdf-colors');
-    
-    try {
-      const canvas = await html2canvas(input, {
-        scale: 2,
-        useCORS: true,
-        allowTaint: false,
-        logging: true,
-        backgroundColor: null,
-        windowWidth: input.scrollWidth,
-        windowHeight: input.scrollHeight
-      });
-      const imgData = canvas.toDataURL('image/png');   
-      const orientation  = window.innerWidth > window.innerHeight ? 'l' : 'p';   
-      const pdf = new jsPDF(orientation, 'mm', [210, canvas.height * 210 / canvas.width]); // Ajusta el tamaño del PDF
-      // Ajustar tamaño de imagen al PDF
-      const imgProps = pdf.getImageProperties(imgData);
-      const pdfWidth = pdf.internal.pageSize.getWidth();
-      const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-      
-      pdf.addImage(imgData, 'PNG', 0, 0, pdfWidth, pdfHeight);
-      pdf.save(`Resultado-${index + 1}.pdf`);
-    } catch (error) {
-      console.error('Error generando el PDF:', error);
-    } finally {
-      input.classList.remove('pdf-colors');
-
-    }
-  };
   
 
   return (
@@ -154,12 +118,12 @@ const Resultados = () => {
           {results.map((result, index) => (  
             <div key={index} id={`result-${index}`}>
               <h2>Resultado {results.length - index}</h2>
-              <div className="contentImg" data-html2canvas-ignore="true">
-                <button onClick={openPDFModal} className="generate-pdf-selector-button"><img src={donwload} />Generar PDF</button>
-              </div>
               <div className="results-grid">
                 <div className="result-card">
-                  <div className="delete-button" data-html2canvas-ignore="true">                    
+                  <div className="contentImg" data-html2canvas-ignore="true">
+                    <button onClick={openPDFModal} className="generate-pdf-selector-button"><img src={donwload} />Generar PDF</button>
+                  </div>
+                  <div className="delete-button" data-html2canvas-ignore="true">                                      
                     <button onClick={() => handleDeleteResult(index)} className="selector"><img src={deleteIcon}/></button>
                   </div>
                   <h2>Resumen de Datos</h2>
