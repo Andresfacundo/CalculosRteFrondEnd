@@ -37,7 +37,8 @@
     box-shadow: 0rem 0rem 11px 3px rgba(170, 168, 168, 0.5);
 }
 .content-compare .contentImg{
-    margin-bottom: 2.5rem;
+    /* margin-bottom: 2.5rem; */
+    padding: 0;
     
 }
 

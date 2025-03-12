@@ -118,11 +118,11 @@ const Resultados = () => {
           {results.map((result, index) => (  
             <div key={index} id={`result-${index}`}>
               <h2>Resultado {results.length - index}</h2>
-              <div className="results-grid">
-                <div className="result-card">
                   <div className="contentImg" data-html2canvas-ignore="true">
                     <button onClick={openPDFModal} className="generate-pdf-selector-button"><img src={donwload} />Generar PDF</button>
                   </div>
+              <div className="results-grid">
+                <div className="result-card">
                   <div className="delete-button" data-html2canvas-ignore="true">                                      
                     <button onClick={() => handleDeleteResult(index)} className="selector"><img src={deleteIcon}/></button>
                   </div>
