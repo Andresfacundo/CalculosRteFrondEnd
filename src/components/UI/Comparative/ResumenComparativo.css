@@ -51,6 +51,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
+ 
+  }
+  .resumen-cards .card-everrun{
+    margin-top: .8rem;
+    border-top: 1px solid #889AA4;
+    text-align: center;
+    color: #333;
   }
   
   .column-header {
@@ -61,19 +69,16 @@
   }
   
   .column-value {
-    /* font-size: 1.1rem; */
-    /* font-weight: 600; */
     margin-bottom: 5px;
-    color: #555;
+    color: #333;
   }
   
   .column-diff {
-    font-size: 0.85rem;
+    /* font-size: 0.85rem; */
     color: #059669; /* Color verde para valores positivos */
     margin-bottom: 3px;
   }
   .column-percentage {
-    font-size: 0.85rem;
     color: #059669;
   }
   

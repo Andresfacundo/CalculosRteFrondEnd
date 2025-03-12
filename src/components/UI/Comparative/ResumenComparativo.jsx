@@ -1,6 +1,10 @@
 import React from 'react';
 import './ResumenComparativo.css';
-import gomez from '../../../assets/Group 17.png';
+import formatCurrency from '../../../utils/formatUtils';
+ 
+
+
+// selectedActual
 
 const ResumenComparativo = ({ selectedActual, selectProyections }) => {
   // Extraer todos los valores relevantes
@@ -25,9 +29,9 @@ const ResumenComparativo = ({ selectedActual, selectProyections }) => {
   const maxValue = Math.max(employerActual, employerProjected, workerActual, workerProjected, 1);
   
   // Format currency values
-  const formatCurrency = (value) => {
-    return `$${value.toLocaleString('es-AR')}`;
-  };
+  // const formatCurrency = (value) => {
+  //   return `$${value.toLocaleString('es-AR')}`;
+  // };
   
   // Calculate bar heights (max 150px)
   const getBarHeight = (value) => {
@@ -43,7 +47,10 @@ const ResumenComparativo = ({ selectedActual, selectProyections }) => {
   
   // Calcular diferencia porcentual para la barra de diferencia
   const diffPercentaje = calcularPorcentaje(employerActual, employerProjected);
-  
+  const sobreCostoActual = employerActual - workerActual;
+  const sobreCostoProyectado = employerProjected - workerProjected;
+
+
   return (
     <div className="resumen-comparativo-container">
       <h2 className="resumen-title">Resumen Comparativo</h2>
@@ -52,40 +59,46 @@ const ResumenComparativo = ({ selectedActual, selectProyections }) => {
       <div className="resumen-cards">
         {/* Tarjeta de Costo Total Empleador */}
         <div className="resumen-card employer-card">
-          <h3 className="card-title">Costo Total Empleador</h3>
+          <h3 className="card-title">Actual</h3>
           <div className="card-content">
-            <div className="card-column">
-              <div className="column-header">Actual</div>
+            <div className="card-column"> 
+              <div className="column-header">Costo total</div>
               <div className={`column-value ${employerActual < 0 ? 'negative' : ''}`}>{formatCurrency(employerActual)}</div>
               <div className={`column-diff ${employerActual - employerProjected < 0 ? 'negative' : ''}`}>{calcularDiferencia(employerActual, employerProjected)}</div>
               <div className={`column-percentage ${employerActual - employerProjected < 0 ? 'negative' : ''}`}>{calcularPorcentaje(employerActual, employerProjected)}</div>
             </div>
             <div className="card-column">
-              <div className="column-header">Proyectado</div>
-              <div className={`column-value ${employerProjected < 0 ? 'negative' : ''}`}>{formatCurrency(employerProjected)}</div>
-              <div className={`column-diff ${employerProjected - employerActual < 0 ? 'negative' : ''}`}>{calcularDiferencia(employerProjected, employerActual)}</div>
-              <div className={`column-percentage ${employerProjected - employerActual < 0 ? 'negative' : ''}`}>{calcularPorcentaje(employerProjected, employerActual)}</div>
+              <div className="column-header">Pago neto</div>
+              <div className={`column-value ${workerActual < 0 ? 'negative' : ''}`}>{formatCurrency(workerActual)}</div>
+              <div className={`column-diff ${workerActual - workerProjected   < 0 ? 'negative' : ''}`}>{calcularDiferencia(workerActual,workerProjected )}</div>
+              <div className={`column-percentage ${workerActual - workerProjected   < 0 ? 'negative' : ''}`}>{calcularPorcentaje(workerActual,workerProjected  )}</div>
             </div>
           </div>
+            <div className='card-everrun'>
+              <p>Sobre costo {formatCurrency(sobreCostoActual)}</p>    
+            </div>
         </div>
         
         {/* Tarjeta de Pago Neto Trabajador */}
         <div className="resumen-card worker-card">
-          <h3 className="card-title">Pago Neto Trabajador</h3>
+          <h3 className="card-title">Proyectado</h3>
           <div className="card-content">
             <div className="card-column">
-              <div className="column-header">Actual</div>
-              <div className={`column-value ${workerActual < 0 ? 'negative' : ''}`}>{formatCurrency(workerActual)}</div>
-              <div className={`column-diff ${workerActual - workerProjected < 0 ? 'negative' : ''}`}>{calcularDiferencia(workerActual, workerProjected)}</div>
-              <div className={`column-percentage ${workerActual - workerProjected < 0 ? 'negative' : ''}`}>{calcularPorcentaje(workerActual, workerProjected)}</div>
+              <div className="column-header">Costo total</div>
+              <div className={`column-value ${employerProjected < 0 ? 'negative' : ''}`}>{formatCurrency(employerProjected)}</div>
+              <div className={`column-diff ${employerProjected - employerActual  < 0 ? 'negative' : ''}`}>{calcularDiferencia(employerProjected,employerActual)}</div>
+              <div className={`column-percentage ${ employerProjected - employerActual < 0 ? 'negative' : ''}`}>{calcularPorcentaje(employerProjected,employerActual)}</div>
             </div>
             <div className="card-column">
-              <div className="column-header">Proyectado</div>
+              <div className="column-header">Pago neto</div>
               <div className={`column-value ${workerProjected < 0 ? 'negative' : ''}`}>{formatCurrency(workerProjected)}</div>
               <div className={`column-diff ${workerProjected - workerActual < 0 ? 'negative' : ''}`}>{calcularDiferencia(workerProjected, workerActual)}</div>
               <div className={`column-percentage ${workerProjected - workerActual < 0 ? 'negative' : ''}`}>{calcularPorcentaje(workerProjected, workerActual)}</div>
             </div>
           </div>
+          <div className='card-everrun'>
+              <p>Sobre costo {formatCurrency(sobreCostoProyectado)}</p>    
+            </div>
         </div>
       </div>
       

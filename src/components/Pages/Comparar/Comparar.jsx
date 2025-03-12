@@ -32,22 +32,11 @@ const Comparar = () => {
       }
     } else {
       if (type === "actual") setSelectedActual(null);
-      if (type === "anterior") setSelectProyecctions(null);
+      if (type === "proyectado") setSelectProyecctions(null);
     }
   };
 
-  // const calcularDiferencia = (content1, key) => {
-  //   if (selectedActual && selectProyections) {
-  //     const diferencia =
-  //       (selectedActual?.[content1]?.[key] || 0) -
-  //       (selectProyections?.[content1]?.[key] || 0);
 
-  //     return diferencia >= 0
-  //       ? `+ ${formatCurrency(diferencia)}`
-  //       : `- ${formatCurrency(Math.abs(diferencia))}`;
-  //   }
-  //   return "+$0";
-  // };
 
   const calcularVariacion = (content1, key) => {
     if (selectedActual && selectProyections) {
@@ -86,13 +75,13 @@ const Comparar = () => {
                   Resultado {index + 1}
                 </option>
               ))}
-            </select>
+            </select> 
           </div>
           <div className="box-select-compare">
             <h3>Proyectado</h3>
             <select
               className="box-input"
-              onChange={(e) => handleSelectChange(e, "anterior")}
+              onChange={(e) => handleSelectChange(e, "proyectado")}
             >
               <option value="-1">--Seleccione--</option>
               {results.map((_, index) => (
@@ -100,7 +89,7 @@ const Comparar = () => {
                   Resultado {index + 1}
                 </option>
               ))}
-            </select>
+            </select>            
           </div>
 
           <div className="result-proyecction">
@@ -112,7 +101,7 @@ const Comparar = () => {
         </div>
         <div className="content-graphic">
           <div className="">
-            <ResumenComparativo selectedActual={selectedActual} selectProyections={selectProyections} />
+            <ResumenComparativo  selectProyections={selectProyections}selectedActual={selectedActual} />
           
           </div>
           <div className="gomezV">
