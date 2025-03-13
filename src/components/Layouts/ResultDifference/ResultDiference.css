@@ -1,7 +1,6 @@
 .content-tittle{
     display: flex;
     justify-content: space-around;
-    /* border: 2px solid blue; */
     border-bottom:1px solid #889AA4;
 }
 
@@ -16,14 +15,28 @@
     justify-content: space-around;
 }
 .content-difference ,.concept ,.content-actual, .content-proyectado ,.diferencia{
-    /* border: 2px solid yellow; */
     width: 100%;
     text-align: center;
 }
-@media (max-width:900px) {
+.concept .result-concept{
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+
+
+}
+.concept .result-concept p{    
+    width: 100%;
+    font-size: 14px;
+}
+@media (max-width:1000px) {
     .content-tittle h3{
         font-size: 16px;
     }
+    .concept .result-concept p{    
+        font-size: 14px;
+    }
+
 
     
 }
