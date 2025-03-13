@@ -8,8 +8,8 @@ const ResultDiference = ({ selectedActual, selectProyections }) => {
   const calcularDiferencia = (content1, key) => {
     if (selectedActual && selectProyections) {
       const diferencia =
-        (selectedActual?.[content1]?.[key] || 0) -
-        (selectProyections?.[content1]?.[key] || 0);
+      (selectProyections?.[content1]?.[key] || 0)-
+        (selectedActual?.[content1]?.[key] || 0) ;
 
       return diferencia >= 0
         ? `+ ${formatCurrency(diferencia)}`
