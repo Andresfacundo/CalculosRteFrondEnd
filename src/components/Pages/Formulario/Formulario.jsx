@@ -14,13 +14,14 @@ const Formulario = () => {
     salario: "",
     otrosPagosSalariales: "",
     otrosPagosNoSalariales: "",
-    auxilioTransporte: "",
+    auxilioDeTransporte: "Si",
     auxilioAlimentacion: "",
     pensionado: "No",
     exonerado: "Si",
     claseRiesgo: "1",
   });
   const[showAlert, setShowAlert] = useState(false);
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +41,7 @@ const Formulario = () => {
         otrosPagosSalariales: parseFloat(formData.otrosPagosSalariales) || 0,
         otrosPagosNoSalariales:
           parseFloat(formData.otrosPagosNoSalariales) || 0,
-        auxilioTransporte: parseFloat(formData.auxilioTransporte) || 0,
+        auxilioTransporte: parseFloat(formData.auxilioDeTransporte) || 0,
         deducciones: parseFloat(formData.deducciones) || 0,
         retencionFuente: parseFloat(formData.retencionFuente) || 0,
       });
@@ -174,6 +175,20 @@ const Formulario = () => {
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
+              </select>
+            </div>
+            
+            <div className="form-group">
+              <label>Auxilio de Transporte</label>
+              <select
+                id="auxilioDeTransporte"
+                name="auxilioDeTransporte"
+                value={formData.auxilioDeTransporte}
+                onChange={handleInputChange}
+              >
+                <option value="Si">Si</option>
+                <option value="No">No</option>
+
               </select>
             </div>
           </div>
