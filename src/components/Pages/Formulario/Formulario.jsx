@@ -9,6 +9,8 @@ import Navbar from "../../UI/Navbar/Navbar.jsx";
 import "../../UI/Navbar/Navbar.css"
 import ok from"../../../assets/ok.png"
 const Formulario = () => {
+  const salarioMinimo = 1423500;
+
   const [formData, setFormData] = useState({
     tipoSalario: "Ordinario",
     salario: "",
@@ -28,6 +30,7 @@ const Formulario = () => {
     setFormData((prev) => ({
       ...prev,
       [name]: value,
+      ...(name === 'salario' && parseFloat(value) > (salarioMinimo * 2) ? { auxilioDeTransporte: "No" } : {})
     }));
   };
 
@@ -57,6 +60,9 @@ const Formulario = () => {
       console.error("Error:", error);
     }
   };
+
+  const salarioValue = parseFloat(formData.salario) || 0;
+  const showAuxilioTransporte = salarioValue <= (salarioMinimo * 2);
 
   return (
     <div className="calculator-container">
@@ -178,28 +184,28 @@ const Formulario = () => {
               </select>
             </div>
             
-            <div className="form-group">
-              <label>Auxilio de Transporte</label>
-              <select
-                id="auxilioDeTransporte"
-                name="auxilioDeTransporte"
-                value={formData.auxilioDeTransporte}
-                onChange={handleInputChange}
-              >
-                <option value="Si">Si</option>
-                <option value="No">No</option>
-
-              </select>
-            </div>
+            {showAuxilioTransporte && (
+              <div className="form-group">
+                <label>Auxilio de Transporte</label>
+                <select
+                  id="auxilioDeTransporte"
+                  name="auxilioDeTransporte"
+                  value={formData.auxilioDeTransporte}
+                  onChange={handleInputChange}
+                >
+                  <option value="Si">Si</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+            )}
           </div>
           <div className="nomina">
-            <button  type="submit">
+            <button type="submit">
               <img src={Calculadora} alt="icono" />
               Calcular Nómina
             </button>
 
-              <img className='gomez' src={gomez} alt="icono" />
-
+            <img className='gomez' src={gomez} alt="icono" />
           </div>
         </form>
       </div>
