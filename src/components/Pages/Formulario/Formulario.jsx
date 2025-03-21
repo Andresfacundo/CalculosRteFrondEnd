@@ -27,11 +27,18 @@ const Formulario = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-      ...(name === 'salario' && parseFloat(value) > (salarioMinimo * 2) ? { auxilioDeTransporte: "No" } : {})
-    }));
+    setFormData((prev) => {
+      // Calcular la suma del salario y otros pagos salariales
+      const nuevoSalario = name === 'salario' ? parseFloat(value) || 0 : parseFloat(prev.salario) || 0;
+      const nuevosOtrosPagos = name === 'otrosPagosSalariales' ? parseFloat(value) || 0 : parseFloat(prev.otrosPagosSalariales) || 0;
+      const sumaSalarial = nuevoSalario + nuevosOtrosPagos;
+      
+      return {
+        ...prev,
+        [name]: value,
+        ...(sumaSalarial > (salarioMinimo * 2) ? { auxilioDeTransporte: "No" } : {})
+      };
+    });
   };
 
   const handleSubmit = async (e) => {
@@ -61,8 +68,10 @@ const Formulario = () => {
     }
   };
 
+  // Actualizar la lógica para mostrar el campo de auxilio de transporte
   const salarioValue = parseFloat(formData.salario) || 0;
-  const showAuxilioTransporte = salarioValue <= (salarioMinimo * 2);
+  const otrosPagosSalarialesValue = parseFloat(formData.otrosPagosSalariales) || 0;
+  const showAuxilioTransporte = (salarioValue + otrosPagosSalarialesValue) <= (salarioMinimo * 2);
 
   return (
     <div className="calculator-container">
