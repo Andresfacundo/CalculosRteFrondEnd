@@ -1,13 +1,13 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import gomez from "../../../assets/Group 17.png";
 import "../../../components/SalaryCalculator.css";
-import "./Formulario.css"
+import "./Formulario.css";
 import Calculadora from "../../../assets/calculator-line.png";
 import { calcularNomina } from "../../../services/services.js";
 import Navbar from "../../UI/Navbar/Navbar.jsx";
-import "../../UI/Navbar/Navbar.css"
-import ok from"../../../assets/ok.png"
+import "../../UI/Navbar/Navbar.css";
+import ok from "../../../assets/ok.png";
+
 const Formulario = () => {
   const salarioMinimo = 1423500;
 
@@ -21,40 +21,83 @@ const Formulario = () => {
     pensionado: "No",
     exonerado: "Si",
     claseRiesgo: "1",
+    deducciones: "",
+    retencionFuente: "",
   });
-  const[showAlert, setShowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
+  // Función para formatear números con separadores de miles
+  const formatNumber = (value) => {
+    if (!value) return "";
+    
+    // Elimina todos los caracteres no numéricos excepto el punto decimal
+    const numericValue = value.toString().replace(/[^\d.]/g, '');
+    
+    // Parsea el valor y lo formatea con separadores de miles
+    const number = parseFloat(numericValue);
+    
+    if (isNaN(number)) return "";
+    
+    // Formatea el número con separadores de miles (usando el formato colombiano)
+    return number.toLocaleString('es-CO');
+  };
+
+  // Función para convertir el valor formateado de vuelta a número
+  const parseFormattedNumber = (formattedValue) => {
+    if (!formattedValue) return "";
+    // Elimina todos los separadores de miles
+    return formattedValue.replace(/\./g, '');
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => {
-      // Calcular la suma del salario y otros pagos salariales
-      const nuevoSalario = name === 'salario' ? parseFloat(value) || 0 : parseFloat(prev.salario) || 0;
-      const nuevosOtrosPagos = name === 'otrosPagosSalariales' ? parseFloat(value) || 0 : parseFloat(prev.otrosPagosSalariales) || 0;
-      const sumaSalarial = nuevoSalario + nuevosOtrosPagos;
+    
+    // Si es un campo numérico, aplicamos el formato
+    const numericFields = ['salario', 'otrosPagosSalariales', 'otrosPagosNoSalariales', 'deducciones', 'retencionFuente'];
+    
+    if (numericFields.includes(name)) {
+      // Guardamos el valor sin formato para cálculos
+      const rawValue = parseFormattedNumber(value);
       
-      return {
-        ...prev,
-        [name]: value,
-        ...(sumaSalarial > (salarioMinimo * 2) ? { auxilioDeTransporte: "No" } : {})
-      };
-    });
+      setFormData((prev) => {
+        // Calcular la suma del salario y otros pagos salariales
+        const nuevoSalario = name === 'salario' ? parseFloat(rawValue) || 0 : parseFloat(parseFormattedNumber(prev.salario)) || 0;
+        const nuevosOtrosPagos = name === 'otrosPagosSalariales' ? parseFloat(rawValue) || 0 : parseFloat(parseFormattedNumber(prev.otrosPagosSalariales)) || 0;
+        const sumaSalarial = nuevoSalario + nuevosOtrosPagos;
+        
+        return {
+          ...prev,
+          [name]: formatNumber(rawValue), // Guardamos el valor formateado para mostrar
+          ...(sumaSalarial > (salarioMinimo * 2) ? { auxilioDeTransporte: "No" } : {})
+        };
+      });
+    } else {
+      // Para campos no numéricos, mantenemos el comportamiento original
+      setFormData((prev) => {
+        return {
+          ...prev,
+          [name]: value
+        };
+      });
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const data = await calcularNomina({
+      // Convertimos todos los valores formateados a números antes de enviar
+      const dataToSend = {
         ...formData,
-        salario: parseFloat(formData.salario) || 0,
-        otrosPagosSalariales: parseFloat(formData.otrosPagosSalariales) || 0,
-        otrosPagosNoSalariales:
-          parseFloat(formData.otrosPagosNoSalariales) || 0,
-        auxilioTransporte: parseFloat(formData.auxilioDeTransporte) || 0,
-        deducciones: parseFloat(formData.deducciones) || 0,
-        retencionFuente: parseFloat(formData.retencionFuente) || 0,
-      });
+        salario: parseFloat(parseFormattedNumber(formData.salario)) || 0,
+        otrosPagosSalariales: parseFloat(parseFormattedNumber(formData.otrosPagosSalariales)) || 0,
+        otrosPagosNoSalariales: parseFloat(parseFormattedNumber(formData.otrosPagosNoSalariales)) || 0,
+        deducciones: parseFloat(parseFormattedNumber(formData.deducciones)) || 0,
+        retencionFuente: parseFloat(parseFormattedNumber(formData.retencionFuente)) || 0,
+        auxilioTransporte: parseFloat(formData.auxilioDeTransporte === "Si" ? "1" : "0") || 0,
+      };
+
+      const data = await calcularNomina(dataToSend);
       const storedResults = localStorage.getItem("Resultados");
       const resultArray = storedResults ? JSON.parse(storedResults) : [];
       resultArray.push(data);
@@ -62,15 +105,15 @@ const Formulario = () => {
       localStorage.setItem("Resultados", JSON.stringify(resultArray));
 
       setShowAlert(true);
-      setTimeout(() => setShowAlert(false),4000);
+      setTimeout(() => setShowAlert(false), 4000);
     } catch (error) {
       console.error("Error:", error);
     }
   };
 
   // Actualizar la lógica para mostrar el campo de auxilio de transporte
-  const salarioValue = parseFloat(formData.salario) || 0;
-  const otrosPagosSalarialesValue = parseFloat(formData.otrosPagosSalariales) || 0;
+  const salarioValue = parseFloat(parseFormattedNumber(formData.salario)) || 0;
+  const otrosPagosSalarialesValue = parseFloat(parseFormattedNumber(formData.otrosPagosSalariales)) || 0;
   const showAuxilioTransporte = (salarioValue + otrosPagosSalarialesValue) <= (salarioMinimo * 2);
 
   return (
@@ -82,9 +125,9 @@ const Formulario = () => {
         </div>
       )}
       <div className="calculator-card">
-            <div className="container-button">
-              <Navbar />
-            </div>
+        <div className="container-button">
+          <Navbar />
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="form-grid">
             <div className="form-group">
@@ -94,10 +137,10 @@ const Formulario = () => {
                 name="tipoSalario"
                 value={formData.tipoSalario}
                 onChange={handleInputChange}
+                required
               >
                 <option value="Ordinario">Ordinario</option>
                 <option value="Integral">Integral</option>
-                {/* <option value="Medio tiempo">Medio Tiempo</option> */}
               </select>
             </div>
 
