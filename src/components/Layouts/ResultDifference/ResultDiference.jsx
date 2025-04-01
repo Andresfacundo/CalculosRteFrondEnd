@@ -84,9 +84,9 @@ const ResultDiference = ({ selectedActual, selectProyections }) => {
           </div>
           <div className='result-concept'>
             <p>ReteFuente</p>
-            <Parrafos results={selectedActual} content1="proyecciones" content2="reteFuente" />
-            <Parrafos results={selectProyections} content1="proyecciones" content2="reteFuente" />
-            <Parrafos results={calcularDiferencia("proyecciones", "reteFuente")} />
+            <Parrafos results={selectedActual} content1="calculations" content2="retencionFuente" />
+            <Parrafos results={selectProyections} content1="calculations" content2="retencionFuente" />
+            <Parrafos results={calcularDiferencia("calculations", "retencionFuente")} />
           </div>
           <div className='result-concept'>
             <p>Deducciones</p>
