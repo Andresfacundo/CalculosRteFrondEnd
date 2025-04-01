@@ -12,7 +12,7 @@ const Formulario = () => {
   const salarioMinimo = 1423500;
 
   const [formData, setFormData] = useState({
-    tipoSalario: "Ordinario",
+    tipoSalario: "", // Changed default to empty to force selection
     salario: "",
     otrosPagosSalariales: "",
     otrosPagosNoSalariales: "",
@@ -25,6 +25,7 @@ const Formulario = () => {
     retencionFuente: "",
   });
   const [showAlert, setShowAlert] = useState(false);
+  const [formErrors, setFormErrors] = useState({}); // Add state for form errors
 
   // Función para formatear números con separadores de miles
   const formatNumber = (value) => {
@@ -49,8 +50,25 @@ const Formulario = () => {
     return formattedValue.replace(/\./g, '');
   };
 
+  // Validate field function
+  const validateField = (name, value) => {
+    let errors = {...formErrors};
+    
+    if (name === 'tipoSalario' && !value) {
+      errors.tipoSalario = 'Debe seleccionar un tipo de salario';
+    } else if (name === 'tipoSalario') {
+      delete errors.tipoSalario;
+    }
+    
+    setFormErrors(errors);
+    return Object.keys(errors).length === 0;
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    
+    // Validate the field
+    validateField(name, value);
     
     // Si es un campo numérico, aplicamos el formato
     const numericFields = ['salario', 'otrosPagosSalariales', 'otrosPagosNoSalariales', 'deducciones', 'retencionFuente'];
@@ -84,6 +102,20 @@ const Formulario = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Validate all fields before submission
+    let hasErrors = false;
+    let newErrors = {};
+    
+    if (!formData.tipoSalario) {
+      newErrors.tipoSalario = 'Debe seleccionar un tipo de salario';
+      hasErrors = true;
+    }
+    
+    if (hasErrors) {
+      setFormErrors(newErrors);
+      return; // Prevent form submission if there are errors
+    }
 
     try {
       // Convertimos todos los valores formateados a números antes de enviar
@@ -138,10 +170,13 @@ const Formulario = () => {
                 value={formData.tipoSalario}
                 onChange={handleInputChange}
                 required
+                className={formErrors.tipoSalario ? "input-error" : ""}
               >
+                <option value="">--Seleccione--</option>
                 <option value="Ordinario">Ordinario</option>
                 <option value="Integral">Integral</option>
               </select>
+         
             </div>
 
             <div className="form-group">
